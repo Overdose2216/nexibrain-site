@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura — Affirmations positives quotidiennes</title>
+  <meta name="description" content="Plus de 4 000 affirmations positives et un plan personnalisé pour ta confiance, ton estime et ta sérénité. Widgets, rappels intelligents, 84 thèmes photo.">
+  <link rel="canonical" href="https://nexibrain.com/aura/">
+  <link rel="icon" type="image/png" href="../assets/img/aura-icon.png">
+  <meta name="theme-color" content="#f8f5ef">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="NexiBrain">
+  <meta property="og:title" content="Aura — Affirmations positives quotidiennes">
+  <meta property="og:description" content="Ton aura, c'est ce que les autres ressentent avant même que tu parles. Chaque jour, les affirmations qui la renforcent : confiance, estime, sérénité.">
+  <meta property="og:url" content="https://nexibrain.com/aura/">
+  <meta property="og:image" content="https://nexibrain.com/assets/img/og-aura.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Rubik:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,600;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <style>
+    :root {
+      --bg: #f8f5ef;
+      --bg-2: #f2eee5;
+      --surface: #ffffff;
+      --surface-2: #fbf8f2;
+      --border: rgba(28, 28, 30, 0.09);
+      --border-strong: rgba(28, 28, 30, 0.18);
+      --text: #1c1c1e;
+      --muted: #6d6a63;
+      --accent: #c2790a;
+      --accent-2: #7c3aed;
+      --accent-ink: #ffffff;
+      --glow-a: rgba(251, 191, 36, 0.18);
+      --glow-b: rgba(124, 58, 237, 0.10);
+      --nav-bg: rgba(248, 245, 239, 0.82);
+    }
+    body { font-size: 17.5px; }
+    .serif { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 600; }
+    .card { box-shadow: 0 6px 22px rgba(28, 28, 30, 0.05); }
+    .store-badge.paper { background: #ffffff; color: #1c1c1e; border-color: var(--border-strong); }
+    .store-badge:hover { box-shadow: 0 12px 28px rgba(28, 28, 30, 0.14); }
+    .phone { border-color: #2a2a2e; box-shadow: 0 24px 60px rgba(28, 28, 30, 0.22); }
+    .pill .dot { animation: none; background: linear-gradient(135deg, #fbbf24, #7c3aed); }
+
+    /* HERO */
+    .hero { padding: 84px 0 56px; }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: center; }
+    .hero h1 { font-size: clamp(36px, 5.8vw, 60px); margin: 24px 0 20px; letter-spacing: -0.015em; }
+    .hero h1 .serif {
+      font-size: 1.12em;
+      background: linear-gradient(100deg, #b45309, #7c3aed);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      padding-right: 2px;
+    }
+    .hero .lead { color: var(--muted); font-size: 18.5px; max-width: 540px; margin-bottom: 30px; }
+    .hero-micro { font-size: 13.5px; color: var(--muted); margin-top: 16px; }
+
+    /* Éventail de téléphones */
+    .fan { position: relative; height: min(560px, 92vw); }
+    .fan::before {
+      content: "";
+      position: absolute;
+      inset: 8% 6%;
+      border-radius: 50%;
+      background:
+        radial-gradient(closest-side at 35% 40%, rgba(124, 58, 237, 0.16), transparent 75%),
+        radial-gradient(closest-side at 70% 65%, rgba(251, 191, 36, 0.28), transparent 75%);
+      filter: blur(38px);
+    }
+    .fan .phone { position: absolute; width: min(228px, 44%); top: 50%; left: 50%; }
+    .fan .p-left { transform: translate(-108%, -46%) rotate(-8deg); z-index: 1; }
+    .fan .p-mid { transform: translate(-50%, -50%); z-index: 3; }
+    .fan .p-right { transform: translate(8%, -42%) rotate(8deg); z-index: 2; }
+    .sparkle { position: absolute; color: #b45309; opacity: 0.55; font-size: 22px; z-index: 4; }
+    .sp-1 { top: 6%; left: 12%; }
+    .sp-2 { top: 12%; right: 8%; font-size: 16px; }
+    .sp-3 { bottom: 8%; left: 20%; font-size: 15px; }
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .fan { height: min(480px, 100vw); margin-top: 12px; }
+      .fan .p-left { transform: translate(-104%, -46%) rotate(-7deg); }
+      .fan .p-right { transform: translate(2%, -42%) rotate(7deg); }
+    }
+
+    /* Cartes d'affirmations */
+    .aff-card {
+      width: 250px;
+      height: 310px;
+      border-radius: 24px;
+      padding: 26px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 12px 30px rgba(28, 28, 30, 0.12);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 1.35;
+    }
+    .aff-card .topic {
+      font-family: var(--font-body);
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+    .aff-cream { background: #f5f0e8; color: #1c1c1e; }
+    .aff-ink { background: #1c1c1e; color: #f5f0e8; }
+    .aff-peach { background: linear-gradient(150deg, #ffd8ac, #ffb79d); color: #401d0f; }
+    .aff-aura { background: linear-gradient(150deg, #1e1b4b, #7c3aed); color: #f6f1ff; }
+    .aff-gold { background: linear-gradient(150deg, #fbbf24, #f59e0b); color: #3d2703; }
+
+    /* Fonctionnalités */
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .features-grid .wide { grid-column: span 2; background: linear-gradient(140deg, rgba(251, 191, 36, 0.14), #ffffff 55%); }
+    @media (max-width: 860px) {
+      .features-grid { grid-template-columns: 1fr; }
+      .features-grid .wide { grid-column: span 1; }
+    }
+
+    /* Étapes */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; counter-reset: step; }
+    .steps .card h3 { margin-top: 4px; }
+    .step-num {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 15px;
+      display: inline-grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #1c1c1e;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+    @media (max-width: 760px) { .steps { grid-template-columns: 1fr; } }
+
+    /* Galerie */
+    .gallery-card { border-radius: 22px; overflow: hidden; box-shadow: 0 14px 34px rgba(28, 28, 30, 0.14); width: 250px; }
+    .gallery-card img { width: 100%; }
+
+    /* Premium */
+    .premium {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      padding: 44px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      box-shadow: 0 6px 22px rgba(28, 28, 30, 0.05);
+    }
+    .premium h3 { font-size: 22px; margin-bottom: 12px; }
+    .premium p { color: var(--muted); font-size: 15.5px; }
+    .premium ul { list-style: none; margin-top: 14px; }
+    .premium li { display: flex; gap: 10px; color: var(--muted); font-size: 15.5px; margin-bottom: 10px; }
+    .premium li::before { content: "✓"; color: var(--accent); font-weight: 700; flex: none; }
+    @media (max-width: 760px) { .premium { grid-template-columns: 1fr; padding: 30px 24px; } }
+
+    /* CTA final */
+    .final-cta { text-align: center; }
+    .final-cta h2 { font-size: clamp(30px, 5vw, 48px); margin-bottom: 16px; }
+    .final-cta .mantra { font-size: 21px; margin-bottom: 8px; }
+    .final-cta p { color: var(--muted); margin-bottom: 34px; }
+    .final-cta .store-badges { justify-content: center; }
+
+    .disclaimer { font-size: 12.5px; color: var(--muted); opacity: 0.9; }
+  </style>
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="nav-brand" href="../">
+        <img src="../assets/img/aura-icon.png" alt="" width="32" height="32">
+        Aura
+      </a>
+      <nav aria-label="Navigation principale">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Ouvrir le menu">☰</button>
+        <ul class="nav-links" id="nav-menu">
+          <li><a href="../">NexiBrain</a></li>
+          <li><a href="#avant-gout">Un avant-goût</a></li>
+          <li><a href="#features">Fonctionnalités</a></li>
+          <li><a href="#comment">Comment ça marche</a></li>
+          <li><a class="nav-cta" href="#download">Télécharger</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============================== HERO ============================== -->
+    <section class="hero container">
+      <div class="hero-grid">
+        <div>
+          <span class="pill reveal"><span class="dot"></span>Ton rituel positif quotidien</span>
+          <h1 class="reveal d1">Ton <span class="serif">aura</span> parle avant toi.</h1>
+          <p class="lead reveal d2">Ton aura, c'est ce que les autres ressentent avant même que tu parles. Aura te donne chaque jour les affirmations qui la renforcent : confiance, estime de toi, présence. Quelques secondes le matin, un rappel dans la journée, un widget sur ton écran.</p>
+          <div class="store-badges reveal d3">
+            <a class="store-badge ink" href="https://apps.apple.com/app/id6796895963" target="_blank" rel="noopener">
+              <svg viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+              <span><small>Télécharger sur</small><strong>l'App Store</strong></span>
+            </a>
+            <a class="store-badge paper" href="https://play.google.com/store/apps/details?id=nexibrain.boost.motivation" target="_blank" rel="noopener">
+              <svg viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
+              <span><small>Disponible sur</small><strong>Google Play</strong></span>
+            </a>
+          </div>
+          <p class="hero-micro reveal d3">Gratuit pour commencer · iOS &amp; Android · 18 langues</p>
+        </div>
+        <div class="fan reveal d2">
+          <span class="sparkle sp-1" aria-hidden="true">✦</span>
+          <span class="sparkle sp-2" aria-hidden="true">✦</span>
+          <span class="sparkle sp-3" aria-hidden="true">✦</span>
+          <div class="phone p-left"><img src="../assets/img/aura/shot-widgets.jpg" alt="Widgets Aura sur l'écran d'accueil" width="540" height="960"></div>
+          <div class="phone p-mid"><img src="../assets/img/aura/shot-quotes.jpg" alt="Affirmation du jour dans Aura" width="540" height="960" fetchpriority="high"></div>
+          <div class="phone p-right"><img src="../assets/img/aura/shot-themes.jpg" alt="Thèmes photographiques d'Aura" width="540" height="960"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== AVANT-GOÛT ============================== -->
+    <section id="avant-gout" class="section-tight" style="background: var(--bg-2);">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Un avant-goût</p>
+          <h2>Des phrases écrites pour être retenues.</h2>
+          <p>Plus de 4 000 affirmations à la première personne, dans 11 univers — de la confiance en soi aux proverbes africains.</p>
+        </div>
+      </div>
+      <div class="container snap-row reveal">
+        <div class="aff-card aff-cream"><span>Je n'ai pas besoin de permission pour être moi.</span><span class="topic">Confiance en soi</span></div>
+        <div class="aff-card aff-aura"><span>Même les jours difficiles, je choisis la sérénité.</span><span class="topic">Sérénité</span></div>
+        <div class="aff-card aff-gold"><span>Ma discipline construit ma liberté.</span><span class="topic">Discipline</span></div>
+        <div class="aff-card aff-ink"><span>Je me parle avec la même bienveillance qu'à un ami.</span><span class="topic">Estime de soi</span></div>
+        <div class="aff-card aff-peach"><span>Je mérite ce qui m'arrive de beau.</span><span class="topic">Amour</span></div>
+      </div>
+    </section>
+
+    <!-- ============================== FONCTIONNALITÉS ============================== -->
+    <section id="features" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Fonctionnalités</p>
+          <h2>Le changement vient de la régularité, jamais de l'effort.</h2>
+        </div>
+        <div class="features-grid">
+          <div class="card wide reveal">
+            <div class="card-icon">🌅</div>
+            <h3>4 000+ affirmations, 11 univers</h3>
+            <p>365 affirmations par sujet, écrites à la première personne pour être dites et retenues facilement : confiance en soi, estime, amour, amitié, jours difficiles, sérénité, discipline, réussite, spiritualité, proverbes africains…</p>
+          </div>
+          <div class="card reveal d1">
+            <div class="card-icon">🎯</div>
+            <h3>Un plan qui te ressemble</h3>
+            <p>Quelques questions au démarrage, et Aura oriente affirmations, rappels et widgets sur ce que tu veux vraiment travailler.</p>
+          </div>
+          <div class="card reveal">
+            <div class="card-icon">🔔</div>
+            <h3>Des rappels au bon moment</h3>
+            <p>Choisis leur nombre et ta plage horaire, Aura les répartit pour toi. Tout est calculé sur ton téléphone — rien ne part vers un serveur.</p>
+          </div>
+          <div class="card reveal d1">
+            <div class="card-icon">📱</div>
+            <h3>Des widgets sur ton écran</h3>
+            <p>Ta phrase du jour là où tu regardes déjà cent fois par jour, en plusieurs tailles.</p>
+          </div>
+          <div class="card reveal d2">
+            <div class="card-icon">🏜️</div>
+            <h3>84 thèmes photo</h3>
+            <p>De vraies photographies — déserts, océans, montagnes — chacune avec sa propre typographie.</p>
+          </div>
+          <div class="card reveal">
+            <div class="card-icon">🔥</div>
+            <h3>Ta série, tes points d'Aura</h3>
+            <p>Un jour, puis deux, puis dix. La série se construit et l'habitude s'installe sans y penser.</p>
+          </div>
+          <div class="card reveal d1">
+            <div class="card-icon">💡</div>
+            <h3>Une question par jour</h3>
+            <p>365 questions courtes avec indice, sur la confiance, la discipline et la pensée positive.</p>
+          </div>
+          <div class="card reveal d2">
+            <div class="card-icon">✍️</div>
+            <h3>Garde ce qui te parle</h3>
+            <p>Favoris, jusqu'à 30 collections, et jusqu'à 200 affirmations écrites par toi, rien qu'à toi.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== COMMENT ÇA MARCHE ============================== -->
+    <section id="comment" class="section" style="background: var(--bg-2);">
+      <div class="container">
+        <div class="section-head center reveal">
+          <p class="eyebrow">Comment ça marche</p>
+          <h2>Trois étapes, c'est tout.</h2>
+        </div>
+        <div class="steps">
+          <div class="card reveal">
+            <span class="step-num">1</span>
+            <h3>Dis-nous ce que tu traverses</h3>
+            <p>Deux minutes de questions au premier lancement, pour orienter ton contenu.</p>
+          </div>
+          <div class="card reveal d1">
+            <span class="step-num">2</span>
+            <h3>Reçois tes affirmations</h3>
+            <p>Le matin dans l'app, dans la journée par tes rappels, en continu sur ton widget.</p>
+          </div>
+          <div class="card reveal d2">
+            <span class="step-num">3</span>
+            <h3>Regarde ton aura grandir</h3>
+            <p>Ta série s'allonge, tes points d'Aura montent — et l'habitude devient naturelle.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== GALERIE ============================== -->
+    <section class="section-tight">
+      <div class="container section-head reveal">
+        <p class="eyebrow">L'app en images</p>
+        <h2>Découvre Aura.</h2>
+      </div>
+      <div class="container snap-row reveal">
+        <div class="gallery-card"><img src="../assets/img/aura/shot-quotes.jpg" alt="Affirmation du jour sur un thème photo" loading="lazy" width="540" height="960"></div>
+        <div class="gallery-card"><img src="../assets/img/aura/shot-widgets.jpg" alt="Widgets d'écran d'accueil" loading="lazy" width="540" height="960"></div>
+        <div class="gallery-card"><img src="../assets/img/aura/shot-themes.jpg" alt="Choix des thèmes photographiques" loading="lazy" width="540" height="960"></div>
+        <div class="gallery-card"><img src="../assets/img/aura/shot-subjects.jpg" alt="Les 11 univers d'affirmations" loading="lazy" width="540" height="960"></div>
+        <div class="gallery-card"><img src="../assets/img/aura/shot-notif.jpg" alt="Rappels intelligents" loading="lazy" width="540" height="960"></div>
+        <div class="gallery-card"><img src="../assets/img/aura/shot-question.jpg" alt="Une question par jour" loading="lazy" width="540" height="960"></div>
+      </div>
+    </section>
+
+    <!-- ============================== PREMIUM ============================== -->
+    <section class="section-tight container">
+      <div class="premium reveal">
+        <div>
+          <h3>Gratuit ou Premium ?</h3>
+          <p>Aura s'utilise gratuitement : ton sujet, les premières affirmations, plusieurs thèmes et le widget. Aura Premium ouvre tout le reste — sans engagement, annulable à tout moment.</p>
+        </div>
+        <div>
+          <ul>
+            <li>Les 4 000+ affirmations, dans les 11 univers</li>
+            <li>Tous les thèmes photo et toutes les couleurs</li>
+            <li>Les 15 icônes d'application</li>
+            <li>L'ensemble des questions quotidiennes</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== CTA FINAL ============================== -->
+    <section id="download" class="section final-cta">
+      <div class="container">
+        <p class="mantra serif reveal">« Le changement vient de la régularité, jamais de l'effort. »</p>
+        <h2 class="reveal d1">Plante la première graine.</h2>
+        <p class="reveal d1">Télécharge Aura et commence gratuitement, dès aujourd'hui.</p>
+        <div class="store-badges reveal d2">
+          <a class="store-badge ink" href="https://apps.apple.com/app/id6796895963" target="_blank" rel="noopener">
+            <svg viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+            <span><small>Télécharger sur</small><strong>l'App Store</strong></span>
+          </a>
+          <a class="store-badge paper" href="https://play.google.com/store/apps/details?id=nexibrain.boost.motivation" target="_blank" rel="noopener">
+            <svg viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
+            <span><small>Disponible sur</small><strong>Google Play</strong></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== CROSS-PROMO ============================== -->
+    <section class="section-tight container">
+      <a class="crosspromo reveal" href="../goalvision/" style="background: var(--surface);">
+        <img src="../assets/img/goalvision-icon.png" alt="Icône GoalVision" width="72" height="72">
+        <div class="cp-text">
+          <h3>Découvre aussi GoalVision</h3>
+          <p>Les pronostics foot d'une IA qui assume son bilan — par NexiBrain.</p>
+        </div>
+        <span class="cp-arrow" aria-hidden="true">→</span>
+      </a>
+    </section>
+  </main>
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <img src="../assets/img/nexibrain-icon.png" alt="" width="34" height="34">
+            NexiBrain
+          </div>
+          <p class="footer-tagline">Des applications mobiles utiles au quotidien, propulsées par l'IA.</p>
+        </div>
+        <div>
+          <h4>Applications</h4>
+          <ul>
+            <li><a href="../goalvision/">GoalVision</a></li>
+            <li><a href="./" aria-current="page">Aura</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Légal</h4>
+          <ul>
+            <li><a href="../terms-of-service/">Conditions d'utilisation</a></li>
+            <li><a href="../privacy-policy/">Politique de confidentialité</a></li>
+            <li><a href="../privacy-policy-gdpr/">Confidentialité (RGPD)</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:contact@nexibrain.com">contact@nexibrain.com</a></li>
+          </ul>
+          <p class="footer-note">Nexibrain Technologies<br>30 N Gould St, STE R<br>Sheridan, WY 82801, USA</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Nexibrain Technologies. Tous droits réservés.</span>
+        <span class="disclaimer">Aura est une application de bien-être et de motivation. Elle ne remplace ni un avis, ni un suivi médical ou psychologique.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/site.js" defer></script>
+</body>
+</html>

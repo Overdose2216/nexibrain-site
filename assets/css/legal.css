@@ -1,0 +1,65 @@
+/* Pages légales — palette claire neutre + typographie de lecture */
+:root {
+  --bg: #f7f8fa;
+  --bg-2: #eef1f5;
+  --surface: #ffffff;
+  --surface-2: #fbfcfd;
+  --border: rgba(31, 36, 48, 0.10);
+  --border-strong: rgba(31, 36, 48, 0.2);
+  --text: #1f2430;
+  --muted: #5b6472;
+  --accent: #157ab8;
+  --accent-2: #1ca8ef;
+  --accent-ink: #ffffff;
+  --glow-a: rgba(28, 168, 239, 0.07);
+  --glow-b: rgba(30, 30, 71, 0.05);
+  --nav-bg: rgba(247, 248, 250, 0.85);
+}
+
+.legal-main { padding: 64px 0 88px; }
+.legal-article {
+  max-width: 780px;
+  margin: 0 auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 52px 56px;
+  box-shadow: 0 8px 30px rgba(31, 36, 48, 0.05);
+}
+@media (max-width: 640px) { .legal-article { padding: 32px 22px; } }
+
+.legal-article .lang-note {
+  font-size: 13px;
+  color: var(--muted);
+  background: var(--bg-2);
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 30px;
+}
+.legal-article h1 { font-size: clamp(28px, 4.5vw, 38px); margin-bottom: 18px; }
+.legal-article h2 { font-size: 21px; margin: 38px 0 12px; }
+.legal-article h3 { font-size: 17.5px; margin: 26px 0 10px; }
+.legal-article p, .legal-article li { color: var(--muted); font-size: 16px; line-height: 1.75; }
+.legal-article p { margin-bottom: 14px; }
+.legal-article ul, .legal-article ol { padding-left: 24px; margin-bottom: 14px; }
+.legal-article li { margin-bottom: 6px; }
+.legal-article strong { color: var(--text); }
+.legal-article a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+.legal-article hr { border: none; border-top: 1px solid var(--border); margin: 34px 0; }
+
+.legal-related { max-width: 780px; margin: 28px auto 0; }
+.legal-related h2 { font-size: 17px; margin-bottom: 14px; color: var(--text); }
+.legal-related ul { list-style: none; display: grid; gap: 10px; }
+.legal-related a {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px 18px;
+  color: var(--text);
+  font-weight: 500;
+  font-size: 15px;
+  transition: border-color 0.2s, transform 0.15s;
+}
+.legal-related a:hover { border-color: var(--accent-2); transform: translateY(-1px); }
+.legal-related a span { display: block; font-weight: 400; font-size: 13px; color: var(--muted); }
