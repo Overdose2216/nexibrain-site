@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GoalVision — Pronostics foot par IA, avec un bilan public</title>
-  <meta name="description" content="Les pronostics foot d'une IA qui assume son bilan : conseil, score exact et probabilités pour chaque match, scores en direct, guide TV et résumés vidéo.">
+  <title data-fr="GoalVision — Pronostics foot par IA, avec un bilan public">GoalVision — AI Football Predictions With a Public Track Record</title>
+  <meta name="description" content="Football predictions from an AI that owns its track record: tip, exact score and probabilities for every match, live scores, TV guide and video highlights.">
   <link rel="canonical" href="https://nexibrain.com/goalvision/">
   <link rel="icon" type="image/png" href="../assets/img/goalvision-icon.png">
   <meta name="theme-color" content="#0b0e14">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="NexiBrain">
-  <meta property="og:title" content="GoalVision — Pronostics foot par IA, avec un bilan public">
-  <meta property="og:description" content="Conseil, score exact et probabilités pour chaque match — avec la preuve des résultats réels de l'IA sur les 7 derniers jours. Gratuit sur iOS et Android.">
+  <meta property="og:title" content="GoalVision — AI Football Predictions With a Public Track Record">
+  <meta property="og:description" content="Tip, exact score and probabilities for every match — with proof of the AI's real results over the last 7 days. Free on iOS and Android.">
   <meta property="og:url" content="https://nexibrain.com/goalvision/">
   <meta property="og:image" content="https://nexibrain.com/assets/img/og-goalvision.jpg">
   <meta name="twitter:card" content="summary_large_image">
@@ -41,8 +41,8 @@
 
     /* HERO */
     .hero { padding: 88px 0 40px; }
-    .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items: center; }
-    .hero h1 { font-size: clamp(34px, 5.6vw, 58px); margin: 24px 0 20px; }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: center; }
+    .hero h1 { font-size: clamp(34px, 5.6vw, 56px); margin: 24px 0 20px; }
     .hero h1 .grad {
       background: linear-gradient(92deg, #2fe6a7, #17b9a0);
       -webkit-background-clip: text;
@@ -51,22 +51,28 @@
     }
     .hero .lead { color: var(--muted); font-size: 18.5px; max-width: 560px; margin-bottom: 32px; }
     .hero-micro { font-size: 13.5px; color: var(--muted); margin-top: 16px; }
-    .hero-visual { position: relative; display: flex; justify-content: center; }
-    .hero-visual::before {
+    .hero-micro .lang { color: var(--accent); font-weight: 700; font-size: 15px; }
+
+    /* Éventail de 3 téléphones (façon ScoreCast) */
+    .hero-fan { position: relative; height: min(620px, 130vw); }
+    .hero-fan::before {
       content: "";
       position: absolute;
-      inset: 6% 12%;
+      inset: 8% 4%;
       border-radius: 50%;
-      background: rgba(47, 230, 167, 0.17);
-      filter: blur(64px);
+      background: rgba(47, 230, 167, 0.15);
+      filter: blur(70px);
       transition: background 0.7s;
     }
-    .hero-visual:hover::before { background: rgba(47, 230, 167, 0.26); }
-    .hero-visual .phone { width: min(290px, 78%); position: relative; z-index: 1; }
+    .hero-fan:hover::before { background: rgba(47, 230, 167, 0.24); }
+    .hero-fan .phone { position: absolute; top: 50%; left: 50%; }
+    .hero-fan .p-mid { width: min(264px, 58%); transform: translate(-50%, -50%); z-index: 3; }
+    .hero-fan .p-left { width: min(216px, 46%); transform: translate(-124%, -46%) rotate(-9deg); z-index: 1; filter: brightness(0.72); }
+    .hero-fan .p-right { width: min(216px, 46%); transform: translate(24%, -46%) rotate(9deg); z-index: 2; filter: brightness(0.72); }
     .float-card {
       position: absolute;
-      z-index: 2;
-      background: rgba(17, 24, 32, 0.82);
+      z-index: 4;
+      background: rgba(17, 24, 32, 0.85);
       border: 1px solid var(--border-strong);
       border-radius: 14px;
       padding: 12px 16px;
@@ -78,12 +84,16 @@
     }
     .float-card strong { display: block; font-family: 'Sora', sans-serif; font-size: 17px; color: var(--text); }
     .float-card .up { color: var(--accent); }
-    .fc-1 { top: 14%; left: 0; }
-    .fc-2 { bottom: 12%; right: 0; }
+    .fc-1 { top: 8%; left: -2%; }
+    .fc-2 { bottom: 7%; right: -2%; }
     @media (max-width: 900px) {
-      .hero-grid { grid-template-columns: 1fr; gap: 44px; }
-      .fc-1 { left: 4%; }
-      .fc-2 { right: 4%; }
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero-fan { height: min(500px, 118vw); }
+      .hero-fan .p-left { width: 42%; transform: translate(-104%, -46%) rotate(-6deg); }
+      .hero-fan .p-right { width: 42%; transform: translate(4%, -46%) rotate(6deg); }
+      .hero-fan .p-mid { width: 54%; }
+      .fc-1 { left: 2%; }
+      .fc-2 { right: 2%; }
     }
 
     /* Ticker compétitions */
@@ -156,12 +166,8 @@
     .checklist li { display: flex; gap: 12px; margin-bottom: 14px; color: var(--muted); font-size: 16px; }
     .checklist li::before { content: "✓"; color: var(--accent); font-weight: 700; flex: none; }
     .checklist strong { color: var(--text); }
+    .block { display: block; }
     @media (max-width: 860px) { .bilan-grid { grid-template-columns: 1fr; gap: 40px; } }
-
-    /* Galerie screenshots */
-    .shots .phone { width: 218px; }
-    .shots { padding-block: 10px; }
-    .shots .marquee-track { gap: 26px; animation-duration: 46s; }
 
     /* CTA final */
     .final-cta { text-align: center; }
@@ -181,15 +187,16 @@
         <img src="../assets/img/goalvision-icon.png" alt="" width="32" height="32">
         GoalVision
       </a>
-      <nav aria-label="Navigation principale">
-        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Ouvrir le menu">☰</button>
+      <nav aria-label="Main navigation">
         <ul class="nav-links" id="nav-menu">
           <li><a href="../">NexiBrain</a></li>
-          <li><a href="#features">Fonctionnalités</a></li>
-          <li><a href="#bilan">Bilan de l'IA</a></li>
+          <li><a href="#features" data-fr="Fonctionnalités">Features</a></li>
+          <li><a href="#bilan" data-fr="Bilan de l'IA">AI track record</a></li>
           <li><a href="#faq">FAQ</a></li>
-          <li><a class="nav-cta" href="#download">Télécharger</a></li>
+          <li><a class="nav-cta" href="#download" data-fr="Télécharger">Download</a></li>
         </ul>
+        <button class="lang-toggle" type="button" aria-label="Passer en français">FR</button>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">☰</button>
       </nav>
     </div>
   </header>
@@ -199,25 +206,32 @@
     <section class="hero container">
       <div class="hero-grid">
         <div>
-          <span class="pill reveal"><span class="dot"></span>Bilan de l'IA mis à jour chaque jour</span>
-          <h1 class="reveal d1">Les pronostics foot d'une IA qui <span class="grad">assume son bilan</span></h1>
-          <p class="lead reveal d2">Conseil, score exact et probabilités pour chaque match des grandes ligues et de la Coupe du Monde 2026. Et chaque jour, GoalVision publie ses résultats réels — pas des promesses.</p>
+          <span class="pill reveal"><span class="dot"></span><span data-fr="Bilan de l'IA mis à jour chaque jour">AI track record updated daily</span></span>
+          <h1 class="reveal d1"><span data-fr="Les pronostics foot d'une IA qui ">Football predictions from an AI that </span><span class="grad" data-fr="assume son bilan">owns its record</span></h1>
+          <p class="lead reveal d2" data-fr="Conseil, score exact et probabilités pour chaque match des grandes ligues et de la Coupe du Monde 2026. Et chaque jour, GoalVision publie ses résultats réels — pas des promesses.">Tip, exact score and probabilities for every match across the top leagues and the 2026 World Cup. And every day, GoalVision publishes its real results — not promises.</p>
           <div class="store-badges reveal d3">
-            <a class="store-badge light" href="https://apps.apple.com/app/id6760734899" target="_blank" rel="noopener">
+            <a class="store-badge black" href="https://apps.apple.com/app/id6760734899" target="_blank" rel="noopener">
               <svg viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
-              <span><small>Télécharger sur</small><strong>l'App Store</strong></span>
+              <span><small data-fr="Télécharger dans">Download on the</small><strong>App Store</strong></span>
             </a>
-            <a class="store-badge dark" href="https://play.google.com/store/apps/details?id=nexibrain.sport.goalPredict" target="_blank" rel="noopener">
-              <svg viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
-              <span><small>Disponible sur</small><strong>Google Play</strong></span>
+            <a class="store-badge black" href="https://play.google.com/store/apps/details?id=nexibrain.sport.goalPredict" target="_blank" rel="noopener">
+              <svg viewBox="0 0 30 33.6" aria-hidden="true">
+                <path fill="#00d7fe" d="M.6.5C.2.9 0 1.6 0 2.4v28.8c0 .8.2 1.5.6 1.9l.1.1L16.9 17v-.4L.7.4l-.1.1z"/>
+                <path fill="#00ee76" d="M22.3 11.4 3.4.5C2.3-.1 1.3 0 .7.5l16.2 16.3 5.4-5.4z"/>
+                <path fill="#ffd502" d="m22.4 22.2 6.3-3.6c1.8-1 1.8-2.7 0-3.7l-6.4-3.6-5.4 5.4 5.5 5.5z"/>
+                <path fill="#f9414e" d="M.7 33.1c.6.6 1.6.6 2.7 0l19-10.9-5.5-5.5L.7 33.1z"/>
+              </svg>
+              <span class="cap"><small data-fr="DISPONIBLE SUR">GET IT ON</small><strong>Google Play</strong></span>
             </a>
           </div>
-          <p class="hero-micro reveal d3">Téléchargement gratuit · iOS &amp; Android · 19 langues</p>
+          <p class="hero-micro reveal d3"><span data-fr="Téléchargement gratuit · iOS &amp; Android · ">Free download · iOS &amp; Android · </span><strong class="lang" data-fr="19 langues">19 languages</strong></p>
         </div>
-        <div class="hero-visual reveal d2">
-          <div class="float-card fc-1">Probabilité victoire<strong class="up">61 %</strong></div>
-          <div class="phone"><img src="../assets/img/gv/shot-prediction.jpg" alt="Pronostic GoalVision : conseil de l'IA, score exact et probabilités" width="540" height="1169" fetchpriority="high"></div>
-          <div class="float-card fc-2">Bilan 7 jours<strong class="up">✓ Public</strong></div>
+        <div class="hero-fan reveal d2">
+          <div class="float-card fc-1"><span data-fr="Probabilité victoire">Win probability</span><strong class="up">61 %</strong></div>
+          <div class="phone p-left"><img src="../assets/img/gv/shot-bilan.jpg" alt="GoalVision matches screen with the AI success rate" loading="lazy" width="540" height="1169"></div>
+          <div class="phone p-mid"><img src="../assets/img/gv/shot-prediction.jpg" alt="GoalVision prediction: AI tip, exact score and probabilities" width="540" height="1169" fetchpriority="high"></div>
+          <div class="phone p-right"><img src="../assets/img/gv/shot-stats.jpg" alt="GoalVision match statistics screen" loading="lazy" width="540" height="1170"></div>
+          <div class="float-card fc-2"><span data-fr="Bilan 7 jours">7-day record</span><strong class="up">✓ Public</strong></div>
         </div>
       </div>
     </section>
@@ -225,18 +239,18 @@
     <!-- ============================== TICKER ============================== -->
     <div class="ticker marquee" aria-hidden="true">
       <div class="marquee-track">
-        <span>Coupe du Monde 2026</span><span>Ligue 1</span><span>Premier League</span><span>La Liga</span><span>Serie A</span><span>Bundesliga</span><span>Ligue des Champions</span><span>Europa League</span>
-        <span>Coupe du Monde 2026</span><span>Ligue 1</span><span>Premier League</span><span>La Liga</span><span>Serie A</span><span>Bundesliga</span><span>Ligue des Champions</span><span>Europa League</span>
+        <span data-fr="Coupe du Monde 2026">World Cup 2026</span><span>Ligue 1</span><span>Premier League</span><span>La Liga</span><span>Serie A</span><span>Bundesliga</span><span data-fr="Ligue des Champions">Champions League</span><span>Europa League</span>
+        <span data-fr="Coupe du Monde 2026">World Cup 2026</span><span>Ligue 1</span><span>Premier League</span><span>La Liga</span><span>Serie A</span><span>Bundesliga</span><span data-fr="Ligue des Champions">Champions League</span><span>Europa League</span>
       </div>
     </div>
 
     <!-- ============================== STATS ============================== -->
     <section class="section-tight container">
       <div class="stats">
-        <div class="card reveal"><span class="num">IA</span><span class="lbl">un pronostic sur chaque match des grandes compétitions</span></div>
-        <div class="card reveal d1"><span class="num gold">7 j</span><span class="lbl">de bilan public, recalculé chaque jour</span></div>
-        <div class="card reveal d2"><span class="num">19</span><span class="lbl">langues disponibles</span></div>
-        <div class="card reveal d3"><span class="num">2026</span><span class="lbl">Coupe du Monde couverte</span></div>
+        <div class="card reveal"><span class="num" data-fr="IA">AI</span><span class="lbl" data-fr="un pronostic sur chaque match des grandes compétitions">a prediction for every match in the top competitions</span></div>
+        <div class="card reveal d1"><span class="num gold" data-fr="7 j">7 d</span><span class="lbl" data-fr="de bilan public, recalculé chaque jour">of public track record, recalculated daily</span></div>
+        <div class="card reveal d2"><span class="num">19</span><span class="lbl" data-fr="langues disponibles">languages available</span></div>
+        <div class="card reveal d3"><span class="num">2026</span><span class="lbl" data-fr="Coupe du Monde couverte">World Cup covered</span></div>
       </div>
     </section>
 
@@ -244,55 +258,55 @@
     <section id="features" class="section">
       <div class="container">
         <div class="section-head reveal">
-          <p class="eyebrow">Fonctionnalités</p>
-          <h2>Tout le match, dans votre poche.</h2>
-          <p>Bien plus que des pronostics : GoalVision réunit tout ce qu'il faut pour suivre, comprendre et anticiper chaque rencontre.</p>
+          <p class="eyebrow" data-fr="Fonctionnalités">Features</p>
+          <h2 data-fr="Tout le match, dans votre poche.">The whole match, in your pocket.</h2>
+          <p data-fr="Bien plus que des pronostics : GoalVision réunit tout ce qu'il faut pour suivre, comprendre et anticiper chaque rencontre.">More than predictions: GoalVision brings together everything you need to follow, understand and anticipate every game.</p>
         </div>
         <div class="bento">
           <div class="card spot reveal">
             <div class="card-icon">⚽</div>
-            <h3>Pronostics IA sur chaque match</h3>
-            <p>Conseil, score exact et probabilités victoire / nul / défaite, générés par l'IA pour toutes les rencontres des grandes compétitions.</p>
+            <h3 data-fr="Pronostics IA sur chaque match">AI predictions for every match</h3>
+            <p data-fr="Conseil, score exact et probabilités victoire / nul / défaite, générés par l'IA pour toutes les rencontres des grandes compétitions.">Tip, exact score and win / draw / loss probabilities, generated by AI for every game in the top competitions.</p>
             <div class="probs" aria-hidden="true">
-              <div class="prob"><span class="ring r1"><b>61 %</b></span>Victoire</div>
-              <div class="prob"><span class="ring r2"><b>23 %</b></span>Nul</div>
-              <div class="prob"><span class="ring r3"><b>16 %</b></span>Défaite</div>
+              <div class="prob"><span class="ring r1"><b>61 %</b></span><span data-fr="Victoire">Win</span></div>
+              <div class="prob"><span class="ring r2"><b>23 %</b></span><span data-fr="Nul">Draw</span></div>
+              <div class="prob"><span class="ring r3"><b>16 %</b></span><span data-fr="Défaite">Loss</span></div>
             </div>
           </div>
           <div class="card reveal d1">
             <div class="card-icon">📊</div>
-            <h3>Bilan transparent</h3>
-            <p>Les résultats réels de l'IA sur les 7 derniers jours, publics et recalculés chaque jour.</p>
+            <h3 data-fr="Bilan transparent">Transparent track record</h3>
+            <p data-fr="Les résultats réels de l'IA sur les 7 derniers jours, publics et recalculés chaque jour.">The AI's real results over the last 7 days, public and recalculated daily.</p>
           </div>
           <div class="card reveal">
             <div class="card-icon">🔴</div>
-            <h3>Scores en direct</h3>
-            <p>Buts, cartons, événements et statistiques de match en temps réel.</p>
+            <h3 data-fr="Scores en direct">Live scores</h3>
+            <p data-fr="Buts, cartons, événements et statistiques de match en temps réel.">Goals, cards, events and match statistics in real time.</p>
           </div>
           <div class="card reveal d1">
             <div class="card-icon">📺</div>
-            <h3>Guide TV</h3>
-            <p>Sur quelle chaîne regarder chaque match, selon votre pays.</p>
+            <h3 data-fr="Guide TV">TV guide</h3>
+            <p data-fr="Sur quelle chaîne regarder chaque match, selon votre pays.">Which channel airs every match, based on your country.</p>
           </div>
           <div class="card reveal d2">
             <div class="card-icon">🎬</div>
-            <h3>Résumés vidéo</h3>
-            <p>Les highlights YouTube directement dans les détails de match.</p>
+            <h3 data-fr="Résumés vidéo">Video highlights</h3>
+            <p data-fr="Les highlights YouTube directement dans les détails de match.">YouTube highlights right inside match details.</p>
           </div>
           <div class="card reveal">
             <div class="card-icon">🔔</div>
-            <h3>Alertes intelligentes</h3>
-            <p>Notifications instantanées pour vos équipes et matchs favoris.</p>
+            <h3 data-fr="Alertes intelligentes">Smart alerts</h3>
+            <p data-fr="Notifications instantanées pour vos équipes et matchs favoris.">Instant notifications for your favorite teams and matches.</p>
           </div>
           <div class="card reveal d1">
             <div class="card-icon">📈</div>
-            <h3>Forme &amp; face-à-face</h3>
-            <p>5 derniers matchs, buts marqués et historique des confrontations pour chaque pronostic.</p>
+            <h3 data-fr="Forme &amp; face-à-face">Form &amp; head-to-head</h3>
+            <p data-fr="5 derniers matchs, buts marqués et historique des confrontations pour chaque pronostic.">Last 5 games, goals scored and head-to-head history behind every prediction.</p>
           </div>
           <div class="card reveal d2">
             <div class="card-icon">🏆</div>
-            <h3>Toutes les compétitions</h3>
-            <p>Coupe du Monde 2026, grandes ligues européennes, classements et calendriers.</p>
+            <h3 data-fr="Toutes les compétitions">All competitions</h3>
+            <p data-fr="Coupe du Monde 2026, grandes ligues européennes, classements et calendriers.">2026 World Cup, top European leagues, standings and fixtures.</p>
           </div>
         </div>
       </div>
@@ -302,41 +316,17 @@
     <section id="bilan" class="section">
       <div class="container bilan-grid">
         <div class="reveal">
-          <p class="eyebrow">La différence GoalVision</p>
-          <h2>Un bilan public.<br>Pas des promesses.</h2>
-          <p style="color: var(--muted); margin-top: 16px;">La plupart des apps de pronostics affichent des taux de réussite invérifiables. GoalVision fait l'inverse : son bilan est calculé sur les résultats réels des 7 derniers jours, visible par tous, directement dans l'app.</p>
+          <p class="eyebrow" data-fr="La différence GoalVision">The GoalVision difference</p>
+          <h2><span class="block" data-fr="Un bilan public.">A public track record.</span><span class="block" data-fr="Pas des promesses.">Not promises.</span></h2>
+          <p style="color: var(--muted); margin-top: 16px;" data-fr="La plupart des apps de pronostics affichent des taux de réussite invérifiables. GoalVision fait l'inverse : son bilan est calculé sur les résultats réels des 7 derniers jours, visible par tous, directement dans l'app.">Most prediction apps show success rates you can't verify. GoalVision does the opposite: its record is computed from the real results of the last 7 days, visible to everyone, right inside the app.</p>
           <ul class="checklist">
-            <li><strong>Recalculé chaque jour</strong> sur les matchs réellement joués</li>
-            <li><strong>Conseils et totaux de buts</strong> évalués séparément</li>
-            <li><strong>Pronostics passés visibles</strong> directement dans le bilan</li>
+            <li><span><strong data-fr="Recalculé chaque jour">Recalculated daily</strong> <span data-fr="sur les matchs réellement joués">on matches actually played</span></span></li>
+            <li><span><strong data-fr="Conseils et totaux de buts">Tips and goal totals</strong> <span data-fr="évalués séparément">scored separately</span></span></li>
+            <li><span><strong data-fr="Pronostics passés visibles">Past predictions visible</strong> <span data-fr="directement dans le bilan">right in the record</span></span></li>
           </ul>
         </div>
         <div class="bilan-visual reveal d1">
-          <div class="phone"><img src="../assets/img/gv/shot-bilan.jpg" alt="Le bilan public de l'IA dans GoalVision : résultats réels sur 7 jours" loading="lazy" width="540" height="1169"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================== SCREENSHOTS ============================== -->
-    <section class="section-tight">
-      <div class="container section-head center reveal">
-        <p class="eyebrow">L'app en images</p>
-        <h2>Conçue pour les soirs de match.</h2>
-      </div>
-      <div class="shots marquee">
-        <div class="marquee-track">
-          <div class="phone"><img src="../assets/img/gv/shot-prediction.jpg" alt="Écran pronostic IA" loading="lazy" width="540" height="1169"></div>
-          <div class="phone"><img src="../assets/img/gv/shot-bilan.jpg" alt="Écran bilan de l'IA" loading="lazy" width="540" height="1169"></div>
-          <div class="phone"><img src="../assets/img/gv/shot-events.jpg" alt="Écran événements de match en direct" loading="lazy" width="540" height="1169"></div>
-          <div class="phone"><img src="../assets/img/gv/shot-stats.jpg" alt="Écran statistiques de match" loading="lazy" width="540" height="1170"></div>
-          <div class="phone"><img src="../assets/img/gv/shot-highlights.jpg" alt="Écran résumés vidéo" loading="lazy" width="540" height="1169"></div>
-          <div class="phone"><img src="../assets/img/gv/shot-lineup.jpg" alt="Écran compositions d'équipes" loading="lazy" width="540" height="1170"></div>
-          <div class="phone" aria-hidden="true"><img src="../assets/img/gv/shot-prediction.jpg" alt="" loading="lazy" width="540" height="1169"></div>
-          <div class="phone" aria-hidden="true"><img src="../assets/img/gv/shot-bilan.jpg" alt="" loading="lazy" width="540" height="1169"></div>
-          <div class="phone" aria-hidden="true"><img src="../assets/img/gv/shot-events.jpg" alt="" loading="lazy" width="540" height="1169"></div>
-          <div class="phone" aria-hidden="true"><img src="../assets/img/gv/shot-stats.jpg" alt="" loading="lazy" width="540" height="1170"></div>
-          <div class="phone" aria-hidden="true"><img src="../assets/img/gv/shot-highlights.jpg" alt="" loading="lazy" width="540" height="1169"></div>
-          <div class="phone" aria-hidden="true"><img src="../assets/img/gv/shot-lineup.jpg" alt="" loading="lazy" width="540" height="1170"></div>
+          <div class="phone"><img src="../assets/img/gv/shot-bilan.jpg" alt="The AI's public track record in GoalVision" loading="lazy" width="540" height="1169"></div>
         </div>
       </div>
     </section>
@@ -346,28 +336,28 @@
       <div class="container" style="max-width: 780px;">
         <div class="section-head center reveal">
           <p class="eyebrow">FAQ</p>
-          <h2>Vos questions, nos réponses.</h2>
+          <h2 data-fr="Vos questions, nos réponses.">Your questions, answered.</h2>
         </div>
         <div class="faq reveal">
           <details>
-            <summary>GoalVision est-elle une application de paris ?</summary>
-            <p>Non. GoalVision ne propose aucun pari en argent réel et n'est liée à aucun bookmaker. Les pronostics sont fournis à titre informatif et de divertissement, pour enrichir votre expérience de fan de football.</p>
+            <summary data-fr="GoalVision est-elle une application de paris ?">Is GoalVision a betting app?</summary>
+            <p data-fr="Non. GoalVision ne propose aucun pari en argent réel et n'est liée à aucun bookmaker. Les pronostics sont fournis à titre informatif et de divertissement, pour enrichir votre expérience de fan de football.">No. GoalVision offers no real-money betting and is not linked to any bookmaker. Predictions are provided for information and entertainment, to enrich your experience as a football fan.</p>
           </details>
           <details>
-            <summary>Les pronostics sont-ils garantis ?</summary>
-            <p>Aucun pronostic ne peut être garanti — et personne ne devrait vous promettre le contraire. C'est justement pour cela que GoalVision publie son bilan réel des 7 derniers jours : vous jugez la fiabilité de l'IA sur des faits, pas sur des slogans.</p>
+            <summary data-fr="Les pronostics sont-ils garantis ?">Are the predictions guaranteed?</summary>
+            <p data-fr="Aucun pronostic ne peut être garanti — et personne ne devrait vous promettre le contraire. C'est justement pour cela que GoalVision publie son bilan réel des 7 derniers jours : vous jugez la fiabilité de l'IA sur des faits, pas sur des slogans.">No prediction can be guaranteed — and nobody should promise you otherwise. That's exactly why GoalVision publishes its real 7-day track record: you judge the AI's reliability on facts, not slogans.</p>
           </details>
           <details>
-            <summary>L'application est-elle gratuite ?</summary>
-            <p>Oui, GoalVision se télécharge gratuitement et l'essentiel est accessible sans payer. Un abonnement Premium (avec essai gratuit de 3 jours) débloque l'intégralité des pronostics ; certains contenus peuvent aussi être débloqués match par match en regardant une publicité.</p>
+            <summary data-fr="L'application est-elle gratuite ?">Is the app free?</summary>
+            <p data-fr="Oui, GoalVision se télécharge gratuitement et l'essentiel est accessible sans payer. Un abonnement Premium (avec essai gratuit de 3 jours) débloque l'intégralité des pronostics ; certains contenus peuvent aussi être débloqués match par match en regardant une publicité.">Yes, GoalVision is free to download and the essentials are free to use. A Premium subscription (with a 3-day free trial) unlocks all predictions; some content can also be unlocked match by match by watching an ad.</p>
           </details>
           <details>
-            <summary>Quels championnats sont couverts ?</summary>
-            <p>Les grandes ligues européennes (Ligue 1, Premier League, La Liga, Serie A, Bundesliga…), les coupes d'Europe et la Coupe du Monde 2026, avec classements, calendriers et statistiques.</p>
+            <summary data-fr="Quels championnats sont couverts ?">Which leagues are covered?</summary>
+            <p data-fr="Les grandes ligues européennes (Ligue 1, Premier League, La Liga, Serie A, Bundesliga…), les coupes d'Europe et la Coupe du Monde 2026, avec classements, calendriers et statistiques.">The top European leagues (Ligue 1, Premier League, La Liga, Serie A, Bundesliga…), the European cups and the 2026 World Cup, with standings, fixtures and statistics.</p>
           </details>
           <details>
-            <summary>Dans quelles langues l'app est-elle disponible ?</summary>
-            <p>GoalVision est traduite en 19 langues, dont le français, l'anglais, l'espagnol, le portugais, l'arabe et le vietnamien. Les pronostics eux-mêmes sont générés dans votre langue.</p>
+            <summary data-fr="Dans quelles langues l'app est-elle disponible ?">Which languages is the app available in?</summary>
+            <p data-fr="GoalVision est traduite en 19 langues, dont le français, l'anglais, l'espagnol, le portugais, l'arabe et le vietnamien. Les pronostics eux-mêmes sont générés dans votre langue.">GoalVision is translated into 19 languages, including English, French, Spanish, Portuguese, Arabic and Vietnamese. Predictions themselves are generated in your language.</p>
           </details>
         </div>
       </div>
@@ -376,16 +366,16 @@
     <!-- ============================== CTA FINAL ============================== -->
     <section id="download" class="section final-cta">
       <div class="container">
-        <h2 class="reveal">Le foot vu par l'IA.<br>Essayez GoalVision.</h2>
-        <p class="reveal d1">Gratuit sur iOS et Android — vos premiers pronostics sont à deux minutes.</p>
+        <h2 class="reveal"><span class="block" data-fr="Le foot vu par l'IA.">Football through AI's eyes.</span><span class="block" data-fr="Essayez GoalVision.">Try GoalVision.</span></h2>
+        <p class="reveal d1" data-fr="Gratuit sur iOS et Android — vos premiers pronostics sont à deux minutes.">Free on iOS and Android — your first predictions are two minutes away.</p>
         <div class="store-badges reveal d2">
           <a class="store-badge light" href="https://apps.apple.com/app/id6760734899" target="_blank" rel="noopener">
             <svg viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
-            <span><small>Télécharger sur</small><strong>l'App Store</strong></span>
+            <span><small data-fr="Télécharger dans">Download on the</small><strong>App Store</strong></span>
           </a>
           <a class="store-badge dark" href="https://play.google.com/store/apps/details?id=nexibrain.sport.goalPredict" target="_blank" rel="noopener">
             <svg viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
-            <span><small>Disponible sur</small><strong>Google Play</strong></span>
+            <span><small data-fr="Disponible sur">Get it on</small><strong>Google Play</strong></span>
           </a>
         </div>
       </div>
@@ -394,10 +384,10 @@
     <!-- ============================== CROSS-PROMO ============================== -->
     <section class="section-tight container">
       <a class="crosspromo reveal" href="../aura/">
-        <img src="../assets/img/aura-icon.png" alt="Icône Aura" width="72" height="72">
+        <img src="../assets/img/aura-icon.png" alt="Aura icon" width="72" height="72">
         <div class="cp-text">
-          <h3>Découvrez aussi Aura</h3>
-          <p>Des affirmations positives chaque jour, pour votre confiance et votre sérénité — par NexiBrain.</p>
+          <h3 data-fr="Découvrez aussi Aura">Also discover Aura</h3>
+          <p data-fr="Des affirmations positives chaque jour, pour votre confiance et votre sérénité — par NexiBrain.">Positive affirmations every day, for your confidence and calm — by NexiBrain.</p>
         </div>
         <span class="cp-arrow" aria-hidden="true">→</span>
       </a>
@@ -413,21 +403,21 @@
             <img src="../assets/img/nexibrain-icon.png" alt="" width="34" height="34">
             NexiBrain
           </div>
-          <p class="footer-tagline">Des applications mobiles utiles au quotidien, propulsées par l'IA.</p>
+          <p class="footer-tagline" data-fr="Des applications mobiles utiles au quotidien, propulsées par l'IA.">Useful everyday mobile apps, powered by AI.</p>
         </div>
         <div>
-          <h4>Applications</h4>
+          <h4 data-fr="Applications">Apps</h4>
           <ul>
             <li><a href="./" aria-current="page">GoalVision</a></li>
             <li><a href="../aura/">Aura</a></li>
           </ul>
         </div>
         <div>
-          <h4>Légal</h4>
+          <h4 data-fr="Légal">Legal</h4>
           <ul>
-            <li><a href="../terms-of-service/">Conditions d'utilisation</a></li>
-            <li><a href="../privacy-policy/">Politique de confidentialité</a></li>
-            <li><a href="../privacy-policy-gdpr/">Confidentialité (RGPD)</a></li>
+            <li><a href="../terms-of-service/" data-fr="Conditions d'utilisation">Terms of Service</a></li>
+            <li><a href="../privacy-policy/" data-fr="Politique de confidentialité">Privacy Policy</a></li>
+            <li><a href="../privacy-policy-gdpr/" data-fr="Confidentialité (RGPD)">Privacy (GDPR)</a></li>
           </ul>
         </div>
         <div>
@@ -439,12 +429,13 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2026 Nexibrain Technologies. Tous droits réservés.</span>
-        <span class="disclaimer">Les pronostics sont fournis à titre informatif et de divertissement uniquement. GoalVision ne propose aucun pari en argent réel.</span>
+        <span data-fr="© 2026 Nexibrain Technologies. Tous droits réservés.">© 2026 Nexibrain Technologies. All rights reserved.</span>
+        <span class="disclaimer" data-fr="Les pronostics sont fournis à titre informatif et de divertissement uniquement. GoalVision ne propose aucun pari en argent réel.">Predictions are provided for information and entertainment purposes only. GoalVision does not offer real-money betting.</span>
       </div>
     </div>
   </footer>
 
   <script src="../assets/js/site.js" defer></script>
+  <script src="../assets/js/i18n.js" defer></script>
 </body>
 </html>

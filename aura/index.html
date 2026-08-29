@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aura — Affirmations positives quotidiennes</title>
-  <meta name="description" content="Plus de 4 000 affirmations positives et un plan personnalisé pour ta confiance, ton estime et ta sérénité. Widgets, rappels intelligents, 84 thèmes photo.">
+  <title data-fr="Aura — Affirmations positives quotidiennes">Aura — Daily Positive Affirmations</title>
+  <meta name="description" content="Over 4,000 positive affirmations and a personalized plan for your confidence, self-esteem and calm. Widgets, smart reminders, 84 photo themes.">
   <link rel="canonical" href="https://nexibrain.com/aura/">
   <link rel="icon" type="image/png" href="../assets/img/aura-icon.png">
   <meta name="theme-color" content="#f8f5ef">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="NexiBrain">
-  <meta property="og:title" content="Aura — Affirmations positives quotidiennes">
-  <meta property="og:description" content="Ton aura, c'est ce que les autres ressentent avant même que tu parles. Chaque jour, les affirmations qui la renforcent : confiance, estime, sérénité.">
+  <meta property="og:title" content="Aura — Daily Positive Affirmations">
+  <meta property="og:description" content="Your aura is what people feel before you even speak. Every day, the affirmations that strengthen it: confidence, self-esteem, calm.">
   <meta property="og:url" content="https://nexibrain.com/aura/">
   <meta property="og:image" content="https://nexibrain.com/assets/img/og-aura.jpg">
   <meta name="twitter:card" content="summary_large_image">
@@ -58,6 +58,14 @@
     }
     .hero .lead { color: var(--muted); font-size: 18.5px; max-width: 540px; margin-bottom: 30px; }
     .hero-micro { font-size: 13.5px; color: var(--muted); margin-top: 16px; }
+    .hero-micro .lang {
+      font-weight: 700;
+      font-size: 15px;
+      background: linear-gradient(100deg, #b45309, #7c3aed);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
 
     /* Éventail de téléphones */
     .fan { position: relative; height: min(560px, 92vw); }
@@ -126,7 +134,7 @@
     }
 
     /* Étapes */
-    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; counter-reset: step; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .steps .card h3 { margin-top: 4px; }
     .step-num {
       font-family: var(--font-display);
@@ -184,15 +192,16 @@
         <img src="../assets/img/aura-icon.png" alt="" width="32" height="32">
         Aura
       </a>
-      <nav aria-label="Navigation principale">
-        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Ouvrir le menu">☰</button>
+      <nav aria-label="Main navigation">
         <ul class="nav-links" id="nav-menu">
           <li><a href="../">NexiBrain</a></li>
-          <li><a href="#avant-gout">Un avant-goût</a></li>
-          <li><a href="#features">Fonctionnalités</a></li>
-          <li><a href="#comment">Comment ça marche</a></li>
-          <li><a class="nav-cta" href="#download">Télécharger</a></li>
+          <li><a href="#avant-gout" data-fr="Un avant-goût">A taste of it</a></li>
+          <li><a href="#features" data-fr="Fonctionnalités">Features</a></li>
+          <li><a href="#comment" data-fr="Comment ça marche">How it works</a></li>
+          <li><a class="nav-cta" href="#download" data-fr="Télécharger">Download</a></li>
         </ul>
+        <button class="lang-toggle" type="button" aria-label="Passer en français">FR</button>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">☰</button>
       </nav>
     </div>
   </header>
@@ -202,28 +211,33 @@
     <section class="hero container">
       <div class="hero-grid">
         <div>
-          <span class="pill reveal"><span class="dot"></span>Ton rituel positif quotidien</span>
-          <h1 class="reveal d1">Ton <span class="serif">aura</span> parle avant toi.</h1>
-          <p class="lead reveal d2">Ton aura, c'est ce que les autres ressentent avant même que tu parles. Aura te donne chaque jour les affirmations qui la renforcent : confiance, estime de toi, présence. Quelques secondes le matin, un rappel dans la journée, un widget sur ton écran.</p>
+          <span class="pill reveal"><span class="dot"></span><span data-fr="Ton rituel positif quotidien">Your daily positive ritual</span></span>
+          <h1 class="reveal d1"><span data-fr="Ton ">Your </span><span class="serif">aura</span><span data-fr=" parle avant toi."> speaks before you do.</span></h1>
+          <p class="lead reveal d2" data-fr="Ton aura, c'est ce que les autres ressentent avant même que tu parles. Aura te donne chaque jour les affirmations qui la renforcent : confiance, estime de toi, présence. Quelques secondes le matin, un rappel dans la journée, un widget sur ton écran.">Your aura is what people feel before you even speak. Aura gives you the affirmations that strengthen it, every day: confidence, self-esteem, presence. A few seconds in the morning, a reminder during the day, a widget on your screen.</p>
           <div class="store-badges reveal d3">
-            <a class="store-badge ink" href="https://apps.apple.com/app/id6796895963" target="_blank" rel="noopener">
+            <a class="store-badge black" href="https://apps.apple.com/app/id6796895963" target="_blank" rel="noopener">
               <svg viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
-              <span><small>Télécharger sur</small><strong>l'App Store</strong></span>
+              <span><small data-fr="Télécharger dans">Download on the</small><strong>App Store</strong></span>
             </a>
-            <a class="store-badge paper" href="https://play.google.com/store/apps/details?id=nexibrain.boost.motivation" target="_blank" rel="noopener">
-              <svg viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
-              <span><small>Disponible sur</small><strong>Google Play</strong></span>
+            <a class="store-badge black" href="https://play.google.com/store/apps/details?id=nexibrain.boost.motivation" target="_blank" rel="noopener">
+              <svg viewBox="0 0 30 33.6" aria-hidden="true">
+                <path fill="#00d7fe" d="M.6.5C.2.9 0 1.6 0 2.4v28.8c0 .8.2 1.5.6 1.9l.1.1L16.9 17v-.4L.7.4l-.1.1z"/>
+                <path fill="#00ee76" d="M22.3 11.4 3.4.5C2.3-.1 1.3 0 .7.5l16.2 16.3 5.4-5.4z"/>
+                <path fill="#ffd502" d="m22.4 22.2 6.3-3.6c1.8-1 1.8-2.7 0-3.7l-6.4-3.6-5.4 5.4 5.5 5.5z"/>
+                <path fill="#f9414e" d="M.7 33.1c.6.6 1.6.6 2.7 0l19-10.9-5.5-5.5L.7 33.1z"/>
+              </svg>
+              <span class="cap"><small data-fr="DISPONIBLE SUR">GET IT ON</small><strong>Google Play</strong></span>
             </a>
           </div>
-          <p class="hero-micro reveal d3">Gratuit pour commencer · iOS &amp; Android · 18 langues</p>
+          <p class="hero-micro reveal d3"><span data-fr="Gratuit pour commencer · iOS &amp; Android · ">Free to start · iOS &amp; Android · </span><strong class="lang" data-fr="18 langues">18 languages</strong></p>
         </div>
         <div class="fan reveal d2">
           <span class="sparkle sp-1" aria-hidden="true">✦</span>
           <span class="sparkle sp-2" aria-hidden="true">✦</span>
           <span class="sparkle sp-3" aria-hidden="true">✦</span>
-          <div class="phone p-left"><img src="../assets/img/aura/shot-widgets.jpg" alt="Widgets Aura sur l'écran d'accueil" width="540" height="960"></div>
-          <div class="phone p-mid"><img src="../assets/img/aura/shot-quotes.jpg" alt="Affirmation du jour dans Aura" width="540" height="960" fetchpriority="high"></div>
-          <div class="phone p-right"><img src="../assets/img/aura/shot-themes.jpg" alt="Thèmes photographiques d'Aura" width="540" height="960"></div>
+          <div class="phone p-left"><img src="../assets/img/aura/en/shot-widgets.jpg" data-fr-src="../assets/img/aura/fr/shot-widgets.jpg" alt="Aura home-screen widgets" width="540" height="960"></div>
+          <div class="phone p-mid"><img src="../assets/img/aura/en/shot-quotes.jpg" data-fr-src="../assets/img/aura/fr/shot-quotes.jpg" alt="Daily affirmation in Aura" width="540" height="960" fetchpriority="high"></div>
+          <div class="phone p-right"><img src="../assets/img/aura/en/shot-themes.jpg" data-fr-src="../assets/img/aura/fr/shot-themes.jpg" alt="Aura photo themes" width="540" height="960"></div>
         </div>
       </div>
     </section>
@@ -232,17 +246,17 @@
     <section id="avant-gout" class="section-tight" style="background: var(--bg-2);">
       <div class="container">
         <div class="section-head reveal">
-          <p class="eyebrow">Un avant-goût</p>
-          <h2>Des phrases écrites pour être retenues.</h2>
-          <p>Plus de 4 000 affirmations à la première personne, dans 11 univers — de la confiance en soi aux proverbes africains.</p>
+          <p class="eyebrow" data-fr="Un avant-goût">A taste of it</p>
+          <h2 data-fr="Des phrases écrites pour être retenues.">Lines written to be remembered.</h2>
+          <p data-fr="Plus de 4 000 affirmations à la première personne, dans 11 univers — de la confiance en soi aux proverbes africains.">Over 4,000 first-person affirmations across 11 themes — from self-confidence to African proverbs.</p>
         </div>
       </div>
       <div class="container snap-row reveal">
-        <div class="aff-card aff-cream"><span>Je n'ai pas besoin de permission pour être moi.</span><span class="topic">Confiance en soi</span></div>
-        <div class="aff-card aff-aura"><span>Même les jours difficiles, je choisis la sérénité.</span><span class="topic">Sérénité</span></div>
-        <div class="aff-card aff-gold"><span>Ma discipline construit ma liberté.</span><span class="topic">Discipline</span></div>
-        <div class="aff-card aff-ink"><span>Je me parle avec la même bienveillance qu'à un ami.</span><span class="topic">Estime de soi</span></div>
-        <div class="aff-card aff-peach"><span>Je mérite ce qui m'arrive de beau.</span><span class="topic">Amour</span></div>
+        <div class="aff-card aff-cream"><span data-fr="Je n'ai pas besoin de permission pour être moi.">I don't need permission to be myself.</span><span class="topic" data-fr="Confiance en soi">Self-confidence</span></div>
+        <div class="aff-card aff-aura"><span data-fr="Même les jours difficiles, je choisis la sérénité.">Even on hard days, I choose calm.</span><span class="topic" data-fr="Sérénité">Serenity</span></div>
+        <div class="aff-card aff-gold"><span data-fr="Ma discipline construit ma liberté.">My discipline builds my freedom.</span><span class="topic">Discipline</span></div>
+        <div class="aff-card aff-ink"><span data-fr="Je me parle avec la même bienveillance qu'à un ami.">I speak to myself with the same kindness as to a friend.</span><span class="topic" data-fr="Estime de soi">Self-esteem</span></div>
+        <div class="aff-card aff-peach"><span data-fr="Je mérite ce qui m'arrive de beau.">I deserve the good things coming my way.</span><span class="topic" data-fr="Amour">Love</span></div>
       </div>
     </section>
 
@@ -250,49 +264,49 @@
     <section id="features" class="section">
       <div class="container">
         <div class="section-head reveal">
-          <p class="eyebrow">Fonctionnalités</p>
-          <h2>Le changement vient de la régularité, jamais de l'effort.</h2>
+          <p class="eyebrow" data-fr="Fonctionnalités">Features</p>
+          <h2 data-fr="Le changement vient de la régularité, jamais de l'effort.">Change comes from consistency, never from effort.</h2>
         </div>
         <div class="features-grid">
           <div class="card wide reveal">
             <div class="card-icon">🌅</div>
-            <h3>4 000+ affirmations, 11 univers</h3>
-            <p>365 affirmations par sujet, écrites à la première personne pour être dites et retenues facilement : confiance en soi, estime, amour, amitié, jours difficiles, sérénité, discipline, réussite, spiritualité, proverbes africains…</p>
+            <h3 data-fr="4 000+ affirmations, 11 univers">4,000+ affirmations, 11 themes</h3>
+            <p data-fr="365 affirmations par sujet, écrites à la première personne pour être dites et retenues facilement : confiance en soi, estime, amour, amitié, jours difficiles, sérénité, discipline, réussite, spiritualité, proverbes africains…">365 affirmations per topic, written in the first person so they're easy to say and remember: self-confidence, self-esteem, love, friendship, hard days, serenity, discipline, success, spirituality, African proverbs…</p>
           </div>
           <div class="card reveal d1">
             <div class="card-icon">🎯</div>
-            <h3>Un plan qui te ressemble</h3>
-            <p>Quelques questions au démarrage, et Aura oriente affirmations, rappels et widgets sur ce que tu veux vraiment travailler.</p>
+            <h3 data-fr="Un plan qui te ressemble">A plan that feels like you</h3>
+            <p data-fr="Quelques questions au démarrage, et Aura oriente affirmations, rappels et widgets sur ce que tu veux vraiment travailler.">A few questions at the start, and Aura steers affirmations, reminders and widgets toward what you really want to work on.</p>
           </div>
           <div class="card reveal">
             <div class="card-icon">🔔</div>
-            <h3>Des rappels au bon moment</h3>
-            <p>Choisis leur nombre et ta plage horaire, Aura les répartit pour toi. Tout est calculé sur ton téléphone — rien ne part vers un serveur.</p>
+            <h3 data-fr="Des rappels au bon moment">Reminders at the right time</h3>
+            <p data-fr="Choisis leur nombre et ta plage horaire, Aura les répartit pour toi. Tout est calculé sur ton téléphone — rien ne part vers un serveur.">Pick how many and your time window, Aura spreads them out for you. Everything is computed on your phone — nothing is sent to a server.</p>
           </div>
           <div class="card reveal d1">
             <div class="card-icon">📱</div>
-            <h3>Des widgets sur ton écran</h3>
-            <p>Ta phrase du jour là où tu regardes déjà cent fois par jour, en plusieurs tailles.</p>
+            <h3 data-fr="Des widgets sur ton écran">Widgets on your screen</h3>
+            <p data-fr="Ta phrase du jour là où tu regardes déjà cent fois par jour, en plusieurs tailles.">Your line of the day right where you already look a hundred times a day, in several sizes.</p>
           </div>
           <div class="card reveal d2">
             <div class="card-icon">🏜️</div>
-            <h3>84 thèmes photo</h3>
-            <p>De vraies photographies — déserts, océans, montagnes — chacune avec sa propre typographie.</p>
+            <h3 data-fr="84 thèmes photo">84 photo themes</h3>
+            <p data-fr="De vraies photographies — déserts, océans, montagnes — chacune avec sa propre typographie.">Real photographs — deserts, oceans, mountains — each with its own typography.</p>
           </div>
           <div class="card reveal">
             <div class="card-icon">🔥</div>
-            <h3>Ta série, tes points d'Aura</h3>
-            <p>Un jour, puis deux, puis dix. La série se construit et l'habitude s'installe sans y penser.</p>
+            <h3 data-fr="Ta série, tes points d'Aura">Your streak, your Aura points</h3>
+            <p data-fr="Un jour, puis deux, puis dix. La série se construit et l'habitude s'installe sans y penser.">One day, then two, then ten. The streak builds and the habit settles in without thinking about it.</p>
           </div>
           <div class="card reveal d1">
             <div class="card-icon">💡</div>
-            <h3>Une question par jour</h3>
-            <p>365 questions courtes avec indice, sur la confiance, la discipline et la pensée positive.</p>
+            <h3 data-fr="Une question par jour">One question a day</h3>
+            <p data-fr="365 questions courtes avec indice, sur la confiance, la discipline et la pensée positive.">365 short questions with a hint, on confidence, discipline and positive thinking.</p>
           </div>
           <div class="card reveal d2">
             <div class="card-icon">✍️</div>
-            <h3>Garde ce qui te parle</h3>
-            <p>Favoris, jusqu'à 30 collections, et jusqu'à 200 affirmations écrites par toi, rien qu'à toi.</p>
+            <h3 data-fr="Garde ce qui te parle">Keep what speaks to you</h3>
+            <p data-fr="Favoris, jusqu'à 30 collections, et jusqu'à 200 affirmations écrites par toi, rien qu'à toi.">Favorites, up to 30 collections, and up to 200 affirmations written by you, just for you.</p>
           </div>
         </div>
       </div>
@@ -302,24 +316,24 @@
     <section id="comment" class="section" style="background: var(--bg-2);">
       <div class="container">
         <div class="section-head center reveal">
-          <p class="eyebrow">Comment ça marche</p>
-          <h2>Trois étapes, c'est tout.</h2>
+          <p class="eyebrow" data-fr="Comment ça marche">How it works</p>
+          <h2 data-fr="Trois étapes, c'est tout.">Three steps. That's all.</h2>
         </div>
         <div class="steps">
           <div class="card reveal">
             <span class="step-num">1</span>
-            <h3>Dis-nous ce que tu traverses</h3>
-            <p>Deux minutes de questions au premier lancement, pour orienter ton contenu.</p>
+            <h3 data-fr="Dis-nous ce que tu traverses">Tell us what you're going through</h3>
+            <p data-fr="Deux minutes de questions au premier lancement, pour orienter ton contenu.">Two minutes of questions on first launch, to steer your content.</p>
           </div>
           <div class="card reveal d1">
             <span class="step-num">2</span>
-            <h3>Reçois tes affirmations</h3>
-            <p>Le matin dans l'app, dans la journée par tes rappels, en continu sur ton widget.</p>
+            <h3 data-fr="Reçois tes affirmations">Receive your affirmations</h3>
+            <p data-fr="Le matin dans l'app, dans la journée par tes rappels, en continu sur ton widget.">In the morning in the app, through the day with reminders, always on your widget.</p>
           </div>
           <div class="card reveal d2">
             <span class="step-num">3</span>
-            <h3>Regarde ton aura grandir</h3>
-            <p>Ta série s'allonge, tes points d'Aura montent — et l'habitude devient naturelle.</p>
+            <h3 data-fr="Regarde ton aura grandir">Watch your aura grow</h3>
+            <p data-fr="Ta série s'allonge, tes points d'Aura montent — et l'habitude devient naturelle.">Your streak grows, your Aura points climb — and the habit becomes natural.</p>
           </div>
         </div>
       </div>
@@ -328,16 +342,16 @@
     <!-- ============================== GALERIE ============================== -->
     <section class="section-tight">
       <div class="container section-head reveal">
-        <p class="eyebrow">L'app en images</p>
-        <h2>Découvre Aura.</h2>
+        <p class="eyebrow" data-fr="L'app en images">The app in pictures</p>
+        <h2 data-fr="Découvre Aura.">Discover Aura.</h2>
       </div>
       <div class="container snap-row reveal">
-        <div class="gallery-card"><img src="../assets/img/aura/shot-quotes.jpg" alt="Affirmation du jour sur un thème photo" loading="lazy" width="540" height="960"></div>
-        <div class="gallery-card"><img src="../assets/img/aura/shot-widgets.jpg" alt="Widgets d'écran d'accueil" loading="lazy" width="540" height="960"></div>
-        <div class="gallery-card"><img src="../assets/img/aura/shot-themes.jpg" alt="Choix des thèmes photographiques" loading="lazy" width="540" height="960"></div>
-        <div class="gallery-card"><img src="../assets/img/aura/shot-subjects.jpg" alt="Les 11 univers d'affirmations" loading="lazy" width="540" height="960"></div>
-        <div class="gallery-card"><img src="../assets/img/aura/shot-notif.jpg" alt="Rappels intelligents" loading="lazy" width="540" height="960"></div>
-        <div class="gallery-card"><img src="../assets/img/aura/shot-question.jpg" alt="Une question par jour" loading="lazy" width="540" height="960"></div>
+        <div class="gallery-card"><img src="../assets/img/aura/en/shot-quotes.jpg" data-fr-src="../assets/img/aura/fr/shot-quotes.jpg" alt="Daily affirmation over a photo theme" loading="lazy" width="540" height="960"></div>
+        <div class="gallery-card"><img src="../assets/img/aura/en/shot-widgets.jpg" data-fr-src="../assets/img/aura/fr/shot-widgets.jpg" alt="Home-screen widgets" loading="lazy" width="540" height="960"></div>
+        <div class="gallery-card"><img src="../assets/img/aura/en/shot-themes.jpg" data-fr-src="../assets/img/aura/fr/shot-themes.jpg" alt="Photo theme picker" loading="lazy" width="540" height="960"></div>
+        <div class="gallery-card"><img src="../assets/img/aura/en/shot-subjects.jpg" data-fr-src="../assets/img/aura/fr/shot-subjects.jpg" alt="The 11 affirmation themes" loading="lazy" width="540" height="960"></div>
+        <div class="gallery-card"><img src="../assets/img/aura/en/shot-notif.jpg" data-fr-src="../assets/img/aura/fr/shot-notif.jpg" alt="Smart reminders" loading="lazy" width="540" height="960"></div>
+        <div class="gallery-card"><img src="../assets/img/aura/en/shot-question.jpg" data-fr-src="../assets/img/aura/fr/shot-question.jpg" alt="One question a day" loading="lazy" width="540" height="960"></div>
       </div>
     </section>
 
@@ -345,15 +359,15 @@
     <section class="section-tight container">
       <div class="premium reveal">
         <div>
-          <h3>Gratuit ou Premium ?</h3>
-          <p>Aura s'utilise gratuitement : ton sujet, les premières affirmations, plusieurs thèmes et le widget. Aura Premium ouvre tout le reste — sans engagement, annulable à tout moment.</p>
+          <h3 data-fr="Gratuit ou Premium ?">Free or Premium?</h3>
+          <p data-fr="Aura s'utilise gratuitement : ton sujet, les premières affirmations, plusieurs thèmes et le widget. Aura Premium ouvre tout le reste — sans engagement, annulable à tout moment.">Aura is free to use: your topic, the first affirmations, several themes and the widget. Aura Premium unlocks everything else — no commitment, cancel anytime.</p>
         </div>
         <div>
           <ul>
-            <li>Les 4 000+ affirmations, dans les 11 univers</li>
-            <li>Tous les thèmes photo et toutes les couleurs</li>
-            <li>Les 15 icônes d'application</li>
-            <li>L'ensemble des questions quotidiennes</li>
+            <li data-fr="Les 4 000+ affirmations, dans les 11 univers">All 4,000+ affirmations, across the 11 themes</li>
+            <li data-fr="Tous les thèmes photo et toutes les couleurs">Every photo theme and every color</li>
+            <li data-fr="Les 15 icônes d'application">All 15 app icons</li>
+            <li data-fr="L'ensemble des questions quotidiennes">The full set of daily questions</li>
           </ul>
         </div>
       </div>
@@ -362,17 +376,17 @@
     <!-- ============================== CTA FINAL ============================== -->
     <section id="download" class="section final-cta">
       <div class="container">
-        <p class="mantra serif reveal">« Le changement vient de la régularité, jamais de l'effort. »</p>
-        <h2 class="reveal d1">Plante la première graine.</h2>
-        <p class="reveal d1">Télécharge Aura et commence gratuitement, dès aujourd'hui.</p>
+        <p class="mantra serif reveal" data-fr="« Le changement vient de la régularité, jamais de l'effort. »">“Change comes from consistency, never from effort.”</p>
+        <h2 class="reveal d1" data-fr="Plante la première graine.">Plant the first seed.</h2>
+        <p class="reveal d1" data-fr="Télécharge Aura et commence gratuitement, dès aujourd'hui.">Download Aura and start free, today.</p>
         <div class="store-badges reveal d2">
           <a class="store-badge ink" href="https://apps.apple.com/app/id6796895963" target="_blank" rel="noopener">
             <svg viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
-            <span><small>Télécharger sur</small><strong>l'App Store</strong></span>
+            <span><small data-fr="Télécharger dans">Download on the</small><strong>App Store</strong></span>
           </a>
           <a class="store-badge paper" href="https://play.google.com/store/apps/details?id=nexibrain.boost.motivation" target="_blank" rel="noopener">
             <svg viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
-            <span><small>Disponible sur</small><strong>Google Play</strong></span>
+            <span><small data-fr="Disponible sur">Get it on</small><strong>Google Play</strong></span>
           </a>
         </div>
       </div>
@@ -381,10 +395,10 @@
     <!-- ============================== CROSS-PROMO ============================== -->
     <section class="section-tight container">
       <a class="crosspromo reveal" href="../goalvision/" style="background: var(--surface);">
-        <img src="../assets/img/goalvision-icon.png" alt="Icône GoalVision" width="72" height="72">
+        <img src="../assets/img/goalvision-icon.png" alt="GoalVision icon" width="72" height="72">
         <div class="cp-text">
-          <h3>Découvre aussi GoalVision</h3>
-          <p>Les pronostics foot d'une IA qui assume son bilan — par NexiBrain.</p>
+          <h3 data-fr="Découvre aussi GoalVision">Also discover GoalVision</h3>
+          <p data-fr="Les pronostics foot d'une IA qui assume son bilan — par NexiBrain.">Football predictions from an AI that owns its track record — by NexiBrain.</p>
         </div>
         <span class="cp-arrow" aria-hidden="true">→</span>
       </a>
@@ -400,21 +414,21 @@
             <img src="../assets/img/nexibrain-icon.png" alt="" width="34" height="34">
             NexiBrain
           </div>
-          <p class="footer-tagline">Des applications mobiles utiles au quotidien, propulsées par l'IA.</p>
+          <p class="footer-tagline" data-fr="Des applications mobiles utiles au quotidien, propulsées par l'IA.">Useful everyday mobile apps, powered by AI.</p>
         </div>
         <div>
-          <h4>Applications</h4>
+          <h4 data-fr="Applications">Apps</h4>
           <ul>
             <li><a href="../goalvision/">GoalVision</a></li>
             <li><a href="./" aria-current="page">Aura</a></li>
           </ul>
         </div>
         <div>
-          <h4>Légal</h4>
+          <h4 data-fr="Légal">Legal</h4>
           <ul>
-            <li><a href="../terms-of-service/">Conditions d'utilisation</a></li>
-            <li><a href="../privacy-policy/">Politique de confidentialité</a></li>
-            <li><a href="../privacy-policy-gdpr/">Confidentialité (RGPD)</a></li>
+            <li><a href="../terms-of-service/" data-fr="Conditions d'utilisation">Terms of Service</a></li>
+            <li><a href="../privacy-policy/" data-fr="Politique de confidentialité">Privacy Policy</a></li>
+            <li><a href="../privacy-policy-gdpr/" data-fr="Confidentialité (RGPD)">Privacy (GDPR)</a></li>
           </ul>
         </div>
         <div>
@@ -426,12 +440,13 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2026 Nexibrain Technologies. Tous droits réservés.</span>
-        <span class="disclaimer">Aura est une application de bien-être et de motivation. Elle ne remplace ni un avis, ni un suivi médical ou psychologique.</span>
+        <span data-fr="© 2026 Nexibrain Technologies. Tous droits réservés.">© 2026 Nexibrain Technologies. All rights reserved.</span>
+        <span class="disclaimer" data-fr="Aura est une application de bien-être et de motivation. Elle ne remplace ni un avis, ni un suivi médical ou psychologique.">Aura is a well-being and motivation app. It does not replace medical or psychological advice.</span>
       </div>
     </div>
   </footer>
 
   <script src="../assets/js/site.js" defer></script>
+  <script src="../assets/js/i18n.js" defer></script>
 </body>
 </html>

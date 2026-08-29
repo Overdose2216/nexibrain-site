@@ -19,14 +19,25 @@ Site 100 % statique (HTML/CSS + un JS minimal), sans framework ni build : ce qui
 ├── 404.html                         # Page d'erreur (gérée par GitHub Pages)
 ├── assets/
 │   ├── css/  base.css, legal.css    # Socle partagé + style pages légales
-│   ├── js/   site.js                # Menu mobile + animations d'apparition
+│   ├── js/   site.js, i18n.js       # Menu mobile, animations, bascule EN/FR
 │   └── img/                         # Images optimisées (icônes, screenshots, OG)
+│       └── aura/en, aura/fr         # Screenshots Aura localisés (swap auto EN/FR)
 ├── CNAME                            # Domaine custom pour GitHub Pages
 ├── robots.txt / sitemap.xml
 ```
 
 Chaque page définit sa palette en surchargeant les variables CSS de `assets/css/base.css`
 (GoalVision : sombre / vert néon — Aura : papier chaud / or & violet — légal : neutre clair).
+
+## Langues (EN par défaut, FR au clic)
+
+Le site est en **anglais par défaut**. Un bouton **FR/EN** dans la barre de navigation bascule
+la langue ; le choix est mémorisé (localStorage) et suit le visiteur de page en page.
+
+- Chaque texte traduisible porte un attribut `data-fr="…"` (l'anglais est le texte du HTML).
+- Les screenshots Aura sont localisés via `data-fr-src` (dossiers `assets/img/aura/en` et `fr`).
+- **Campagnes** : ajouter `?lang=fr` à l'URL force le français dès l'arrivée —
+  ex. `https://nexibrain.com/goalvision/?lang=fr` pour une campagne France.
 
 ## Ajouter une nouvelle app
 
@@ -77,4 +88,5 @@ Faire pointer les publicités directement sur les pages apps :
 - Aura : `https://nexibrain.com/aura/`
 
 Les paramètres UTM (`?utm_source=tiktok&utm_campaign=...`) peuvent être ajoutés librement,
-les pages étant statiques ils n'affectent rien.
+les pages étant statiques ils n'affectent rien. Pour une audience francophone, combiner avec
+`&lang=fr` (ou `?lang=fr` seul) pour afficher la page en français.
