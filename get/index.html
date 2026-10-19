@@ -62,6 +62,15 @@
   var IOS_URL = "https://apps.apple.com/app/id6760734899";
   var ANDROID_URL = "https://play.google.com/store/apps/details?id=nexibrain.sport.goalPredict&hl=fr";
 
+  // Attribution : ?ref=menphis alimente l'Install Referrer Android
+  var ref = (new URLSearchParams(location.search).get("ref") || "menphis")
+    .toLowerCase().replace(/[^a-z0-9_-]/g, "");
+
+  var referrer = encodeURIComponent(
+    "utm_source=" + ref + "&utm_medium=tiktok&utm_campaign=" + ref + "&af_sub1=" + ref
+  );
+  var ANDROID_TRACKED = ANDROID_URL + "&referrer=" + referrer;
+
   var ua = navigator.userAgent || "";
   var isIOS = /iPad|iPhone|iPod/.test(ua) ||
               (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
@@ -73,7 +82,7 @@
   if (forced === "ios" || (!forced && isIOS)) {
     location.replace(IOS_URL);
   } else if (forced === "android" || (!forced && isAndroid)) {
-    location.replace(ANDROID_URL);
+    location.replace(ANDROID_TRACKED);
   }
   // Desktop : on laisse la page avec les deux boutons
 })();
