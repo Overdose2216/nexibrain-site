@@ -50,7 +50,7 @@
 
     <a class="btn" id="open-outside" href="#" style="display:none">Continuer vers l'application</a>
 
-    <a class="btn" id="ios" href="https://apps.apple.com/app/apple-store/id6760734899?pt=128672084&amp;ct=Menphis&amp;mt=8" data-store="app_store">Télécharger sur l'App Store</a>
+    <a class="btn" id="ios" href="https://apps.apple.com/app/apple-store/id6760734899?pt=128672084&amp;ct=memphis_jrrr&amp;mt=8" data-store="app_store">Télécharger sur l'App Store</a>
     <a class="btn secondary" id="android" href="https://play.google.com/store/apps/details?id=nexibrain.sport.goalPredict&amp;hl=fr" data-store="google_play">Télécharger sur Google Play</a>
 
     <div class="spinner" id="spinner" style="display:none"></div>
@@ -59,11 +59,11 @@
 
 <script>
 (function () {
-  var IOS_URL = "https://apps.apple.com/app/apple-store/id6760734899?pt=128672084&ct=Menphis&mt=8";
+  var IOS_URL = "https://apps.apple.com/app/apple-store/id6760734899?pt=128672084&ct=memphis_jrrr&mt=8";
   var ANDROID_URL = "https://play.google.com/store/apps/details?id=nexibrain.sport.goalPredict&hl=fr";
 
   var params = new URLSearchParams(location.search);
-  var ref = (params.get("ref") || "menphis").toLowerCase().replace(/[^a-z0-9_-]/g, "");
+  var ref = (params.get("ref") || "memphis_jrrr").toLowerCase().replace(/[^a-z0-9_-]/g, "");
 
   // Attribution Android : Google Play Install Referrer, lu par AppsFlyer
   var referrer = encodeURIComponent(
