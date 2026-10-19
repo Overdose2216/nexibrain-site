@@ -100,17 +100,25 @@
     return false;
   }
 
-  if (forced === "ios" || forced === "android" || isIOS || isAndroid) {
-    if (inTikTok) {
-      var btn = document.getElementById("open-outside");
-      btn.style.display = "flex";
-      btn.addEventListener("click", function (e) {
-        e.preventDefault();
-        if (!openOutside(target)) { location.href = target; }
-      });
-    } else {
-      location.replace(target);
-    }
+  // Aucune redirection automatique : un lien qui redirige tout seul est percu
+  // comme suspect par le WebView de TikTok (page blanche). On affiche donc
+  // toujours un bouton, et le tap sort du WebView vers le navigateur systeme.
+  if (isIOS || isAndroid || forced) {
+    var btn = document.getElementById("open-outside");
+    var isIosTarget = (forced === "ios") || (!forced && isIOS);
+
+    btn.textContent = isIosTarget
+      ? "Telecharger sur l'App Store"
+      : "Telecharger sur Google Play";
+    btn.style.display = "flex";
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (!openOutside(target)) { location.href = target; }
+    });
+
+    // On masque les deux boutons generiques sur mobile : un seul choix clair
+    document.getElementById("ios").style.display = "none";
+    document.getElementById("android").style.display = "none";
   }
 })();
 </script>
