@@ -66,8 +66,11 @@
   var ref = (params.get("ref") || "memphis_jrrr").toLowerCase().replace(/[^a-z0-9_-]/g, "");
 
   // Attribution Android : Google Play Install Referrer, lu par AppsFlyer
+  // Play n'a pas de "campagne" comme Apple : c'est l'Install Referrer qui joue
+  // ce role. AppsFlyer lit ces parametres et les classe en media_source / campaign.
   var referrer = encodeURIComponent(
-    "utm_source=" + ref + "&utm_medium=tiktok&utm_campaign=" + ref + "&af_sub1=" + ref
+    "utm_source=tiktok&utm_medium=influencer&utm_campaign=" + ref +
+    "&af_channel=linktree&af_sub1=" + ref + "&af_sub2=menphis_jrrr"
   );
   var ANDROID_TRACKED = ANDROID_URL + "&referrer=" + referrer;
 
