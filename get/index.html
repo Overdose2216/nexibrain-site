@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GoalVision — Télécharger l'application</title>
+<meta name="description" content="Télécharge GoalVision : scores en direct, pronostics IA et résumés vidéo.">
+<meta property="og:title" content="GoalVision — Télécharger l'application">
+<meta property="og:description" content="Scores en direct, pronostics IA et résumés vidéo.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    background: radial-gradient(circle at 50% 0%, #12211f 0%, #0b0f12 55%, #08090b 100%);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #f2f4f5; padding: 24px; text-align: center;
+  }
+  .card { max-width: 380px; width: 100%; }
+  .logo {
+    width: 88px; height: 88px; border-radius: 22px; margin: 0 auto 22px;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(145deg, #00e5d1, #00b3a4);
+    box-shadow: 0 14px 40px rgba(0, 229, 209, .28);
+    font-size: 44px; line-height: 1;
+  }
+  h1 { font-size: 1.45rem; margin: 0 0 10px; letter-spacing: -.02em; }
+  p { color: #9aa4a8; font-size: .92rem; line-height: 1.55; margin: 0 0 26px; }
+  .btn {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    width: 100%; padding: 15px 18px; margin-bottom: 12px; border-radius: 14px;
+    font-size: .95rem; font-weight: 700; text-decoration: none; color: #06110d;
+    background: #00e5d1; box-shadow: 0 8px 24px rgba(0, 229, 209, .25);
+  }
+  .btn.secondary { background: rgba(255,255,255,.07); color: #f2f4f5; box-shadow: none; border: 1px solid rgba(255,255,255,.12); }
+  .hint { margin-top: 22px; font-size: .74rem; color: #5f6b70; }
+  .spinner {
+    width: 22px; height: 22px; border-radius: 50%; margin: 0 auto;
+    border: 2.5px solid rgba(0,229,209,.25); border-top-color: #00e5d1;
+    animation: spin .8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">⚽</div>
+    <h1>GoalVision</h1>
+    <p>Scores en direct, pronostics IA et résumés vidéo.<br>Choisis ta plateforme.</p>
+
+    <a class="btn" id="ios" href="https://apps.apple.com/app/id6760734899">Télécharger sur l'App Store</a>
+    <a class="btn secondary" id="android" href="https://play.google.com/store/apps/details?id=nexibrain.sport.goalPredict&amp;hl=fr">Télécharger sur Google Play</a>
+
+    <div class="spinner" id="spinner" style="display:none"></div>
+    <div class="hint">Application gratuite · iOS et Android</div>
+  </div>
+
+<script>
+(function () {
+  var IOS_URL = "https://apps.apple.com/app/id6760734899";
+  var ANDROID_URL = "https://play.google.com/store/apps/details?id=nexibrain.sport.goalPredict&hl=fr";
+
+  var ua = navigator.userAgent || "";
+  var isIOS = /iPad|iPhone|iPod/.test(ua) ||
+              (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  var isAndroid = /Android/i.test(ua);
+
+  // Paramètre optionnel ?to=ios|android pour forcer une plateforme
+  var forced = new URLSearchParams(location.search).get("to");
+
+  if (forced === "ios" || (!forced && isIOS)) {
+    location.replace(IOS_URL);
+  } else if (forced === "android" || (!forced && isAndroid)) {
+    location.replace(ANDROID_URL);
+  }
+  // Desktop : on laisse la page avec les deux boutons
+})();
+</script>
+</body>
+</html>
