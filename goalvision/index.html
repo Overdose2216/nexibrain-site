@@ -176,9 +176,131 @@
     .final-cta .store-badges { justify-content: center; }
 
     .disclaimer { font-size: 12.5px; color: var(--muted); opacity: 0.85; }
+
+    /* ── Boutons de store collés au titre (pas de sous-titre) ───────────── */
+    .hero h1 { margin-bottom: 26px; }
+    .hero .store-badges { margin-top: 0; }
+
+    /* ── Navigateur intégré (TikTok, Instagram, Facebook, Snapchat, LinkedIn) ──
+       Ces WebViews bloquent l'ouverture vers l'App Store / Google Play : le lien
+       ne fait rien. On remplace la page par la marche à suivre plutôt que de
+       laisser un bouton mort. La classe `inapp` est posée dans le <head>. */
+    .inapp { display: none; }
+    /* On masque les blocs de la page un par un : masquer tous les enfants de <body>
+       faisait s'effondrer le layout (document à 0 px → écran blanc). */
+    html.is-inapp .ambient,
+    html.is-inapp .nav,
+    html.is-inapp main,
+    html.is-inapp .footer { display: none !important; }
+    html.is-inapp .inapp { display: block; }
+    .inapp {
+      min-height: 100vh; min-height: 100dvh;
+      background: radial-gradient(circle at 50% 0%, #12211f 0%, #0b0e14 55%, #08090b 100%);
+      padding: 26px 22px calc(26px + env(safe-area-inset-bottom));
+      color: var(--text);
+    }
+    .inapp__card { max-width: 420px; margin: 0 auto; text-align: center; }
+    .inapp__shield { width: 66px; height: 66px; margin: 4vh auto 16px; display: block; color: var(--muted); opacity: .85; }
+    .inapp__title { font-family: 'Sora', sans-serif; font-size: 26px; margin: 0 0 10px; letter-spacing: -.02em; }
+    .inapp__sub { color: var(--muted); font-size: 15px; line-height: 1.55; margin: 0 0 24px; }
+    .inapp__steps { list-style: none; margin: 0 0 24px; padding: 0; text-align: left; display: grid; gap: 11px; }
+    .inapp__step { display: flex; align-items: center; gap: 13px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 12px 14px; }
+    .inapp__num { flex: 0 0 26px; width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); font-family: 'Sora', sans-serif; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+    .inapp__art { flex: 0 0 54px; height: 44px; color: var(--text); }
+    .inapp__txt { font-size: 14.5px; line-height: 1.35; }
+    .inapp__txt strong { display: block; font-family: 'Sora', sans-serif; font-size: 15px; font-weight: 600; margin-bottom: 2px; }
+    .inapp__txt span { color: var(--muted); font-size: 13px; }
+    .inapp__btn { display: flex; align-items: center; justify-content: center; gap: 9px; width: 100%; padding: 15px 18px; border: 0; border-radius: 14px; background: var(--accent); color: var(--accent-ink); font-family: 'Sora', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; }
+    .inapp__copied { display: none; margin-top: 10px; color: var(--accent); font-size: 13px; }
+    .inapp__copied.on { display: block; }
+    .inapp__skip { display: inline-block; margin-top: 16px; color: var(--muted); font-size: 13px; text-decoration: underline; cursor: pointer; }
+    .inapp__url { margin-top: 18px; word-break: break-all; user-select: all; -webkit-user-select: all; color: #4e5a60; font-size: 11px; font-family: 'JetBrains Mono', monospace; }
   </style>
+  <script>
+    /* Détection du navigateur intégré AVANT le premier rendu : évite d'afficher
+       la page puis de la remplacer. TikTok, Instagram, Facebook, Snapchat et
+       LinkedIn ouvrent les liens dans un WebView qui bloque les stores. */
+    (function () {
+      var ua = navigator.userAgent || '';
+      var inApp = /(TikTok|musical_ly|BytedanceWebview|trill_|Bytedance|Instagram|FBAN|FBAV|FB_IAB|Snapchat|LinkedInApp)/i.test(ua);
+      if (inApp) document.documentElement.classList.add('is-inapp');
+    })();
+  </script>
 </head>
 <body>
+
+  <!-- Écran affiché uniquement dans un navigateur intégré (lien bio TikTok/Instagram) -->
+  <div class="inapp" id="inapp" role="dialog" aria-modal="true" aria-labelledby="inapp-title">
+    <div class="inapp__card">
+      <svg class="inapp__shield" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 2.6 4.8 5.4v5.9c0 4.6 3 8.5 7.2 10.1 4.2-1.6 7.2-5.5 7.2-10.1V5.4L12 2.6Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        <rect x="9.3" y="10.5" width="5.4" height="4.7" rx="1.1" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M10.5 10.5V9.2a1.5 1.5 0 0 1 3 0v1.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+
+      <h2 class="inapp__title" id="inapp-title" data-fr="Encore une étape">One more step</h2>
+      <p class="inapp__sub" data-fr="Ce navigateur intégré n'ouvre pas l'App Store. Deux secondes, et c'est réglé.">This in-app browser can't open the App Store. It takes two seconds.</p>
+
+      <ol class="inapp__steps">
+        <li class="inapp__step">
+          <span class="inapp__num">1</span>
+          <svg class="inapp__art" viewBox="0 0 54 44" fill="none" aria-hidden="true">
+            <rect x="2" y="6" width="50" height="32" rx="6" stroke="currentColor" stroke-opacity=".32"/>
+            <path d="M2 16h50" stroke="currentColor" stroke-opacity=".32"/>
+            <circle cx="8" cy="11" r="1.4" fill="currentColor" fill-opacity=".45"/>
+            <circle cx="12.5" cy="11" r="1.4" fill="currentColor" fill-opacity=".45"/>
+            <rect x="43" y="6.5" width="8.5" height="9" rx="4.5" fill="#2fe6a7" fill-opacity=".16" stroke="#2fe6a7"/>
+            <circle cx="45" cy="11" r=".95" fill="#2fe6a7"/>
+            <circle cx="47.2" cy="11" r=".95" fill="#2fe6a7"/>
+            <circle cx="49.4" cy="11" r=".95" fill="#2fe6a7"/>
+            <rect x="8" y="22" width="26" height="3" rx="1.5" fill="currentColor" fill-opacity=".16"/>
+            <rect x="8" y="29" width="17" height="3" rx="1.5" fill="currentColor" fill-opacity=".16"/>
+          </svg>
+          <span class="inapp__txt">
+            <strong data-fr="Appuie sur « ··· »">Tap “···”</strong>
+            <span data-fr="En haut à droite de l'écran">Top right of the screen</span>
+          </span>
+        </li>
+        <li class="inapp__step">
+          <span class="inapp__num">2</span>
+          <svg class="inapp__art" viewBox="0 0 54 44" fill="none" aria-hidden="true">
+            <rect x="2" y="6" width="50" height="32" rx="6" stroke="currentColor" stroke-opacity=".32"/>
+            <rect x="6" y="11" width="42" height="11" rx="3.5" fill="#2fe6a7" fill-opacity=".16" stroke="#2fe6a7"/>
+            <rect x="10" y="14.6" width="24" height="2.8" rx="1.4" fill="#2fe6a7"/>
+            <rect x="6" y="25" width="42" height="8" rx="3.5" fill="currentColor" fill-opacity=".1"/>
+            <rect x="10" y="28.2" width="16" height="2.2" rx="1.1" fill="currentColor" fill-opacity=".35"/>
+          </svg>
+          <span class="inapp__txt">
+            <strong data-fr="« Ouvrir dans le navigateur »">“Open in browser”</strong>
+            <span data-fr="Ou « Ouvrir dans Safari / Chrome »">Or “Open in Safari / Chrome”</span>
+          </span>
+        </li>
+        <li class="inapp__step">
+          <span class="inapp__num">3</span>
+          <svg class="inapp__art" viewBox="0 0 54 44" fill="none" aria-hidden="true">
+            <rect x="16" y="5" width="22" height="34" rx="5.5" stroke="currentColor" stroke-opacity=".38"/>
+            <path d="M27 13v9.5m0 0-3.4-3.4M27 22.5l3.4-3.4" stroke="#2fe6a7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M21.5 28.5h11" stroke="currentColor" stroke-opacity=".32" stroke-linecap="round"/>
+          </svg>
+          <span class="inapp__txt">
+            <strong data-fr="Le store s'ouvre">The store opens</strong>
+            <span data-fr="Télécharge GoalVision, c'est gratuit">Download GoalVision, it's free</span>
+          </span>
+        </li>
+      </ol>
+
+      <button class="inapp__btn" type="button" id="inapp-copy">
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" aria-hidden="true">
+          <rect x="9" y="9" width="11" height="11" rx="2.4" stroke="currentColor" stroke-width="1.7"/>
+          <path d="M15 6.5V5.4A2.4 2.4 0 0 0 12.6 3H5.4A2.4 2.4 0 0 0 3 5.4v7.2A2.4 2.4 0 0 0 5.4 15h1.1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        </svg>
+        <span data-fr="Copier le lien">Copy the link</span>
+      </button>
+      <div class="inapp__copied" data-fr="Lien copié — colle-le dans Safari ou Chrome">Link copied — paste it in Safari or Chrome</div>
+      <div class="inapp__skip" id="inapp-skip" data-fr="Voir la page quand même">Show the page anyway</div>
+      <div class="inapp__url"></div>
+    </div>
+  </div>
   <div class="ambient" aria-hidden="true"></div>
 
   <header class="nav">
@@ -207,9 +329,8 @@
       <div class="hero-grid">
         <div>
           <span class="pill reveal"><span class="dot"></span><span data-fr="Bilan de l'IA mis à jour chaque jour">AI track record updated daily</span></span>
-          <h1 class="reveal d1"><span data-fr="Les pronostics foot d'une IA qui ">Football predictions from an AI that </span><span class="grad" data-fr="assume son bilan">owns its record</span></h1>
-          <p class="lead reveal d2" data-fr="Conseil, score exact et probabilités pour chaque match des grandes ligues et de la Coupe du Monde 2026. Et chaque jour, GoalVision publie ses résultats réels — pas des promesses.">Tip, exact score and probabilities for every match across the top leagues and the 2026 World Cup. And every day, GoalVision publishes its real results — not promises.</p>
-          <div class="store-badges reveal d3">
+          <h1 class="reveal d1"><span data-fr="Prédis tous les matchs de foot avec ">Predict every football match with </span><span class="grad" data-fr="l'IA">AI</span></h1>
+          <div class="store-badges reveal d2">
             <a class="store-badge black" href="https://goalvision.onelink.me/J6He?pid=website_social&amp;c=goalvision_site&amp;af_channel=nexibrain_site&amp;af_sub1=goalvision_page" target="_blank" rel="noopener">
               <svg viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
               <span><small data-fr="Télécharger dans">Download on the</small><strong>App Store</strong></span>
@@ -434,6 +555,78 @@
       </div>
     </div>
   </footer>
+
+  <script>
+  (function () {
+    var html = document.documentElement;
+    var ov = document.getElementById('inapp');
+    if (!ov) return;
+    var btnCopy = document.getElementById('inapp-copy');
+    var copied = ov.querySelector('.inapp__copied');
+    var skip = document.getElementById('inapp-skip');
+    var urlBox = ov.querySelector('.inapp__url');
+    if (urlBox) urlBox.textContent = location.href;
+
+    function fallbackCopy(text) {
+      return new Promise(function (resolve, reject) {
+        try {
+          var t = document.createElement('textarea');
+          t.value = text;
+          t.setAttribute('readonly', '');
+          t.style.position = 'fixed';
+          t.style.opacity = '0';
+          document.body.appendChild(t);
+          t.select();
+          var ok = document.execCommand('copy');
+          document.body.removeChild(t);
+          ok ? resolve() : reject();
+        } catch (e) { reject(e); }
+      });
+    }
+
+    /* Le presse-papiers moderne est souvent refusé dans un WebView : on retombe
+       sur execCommand avant d'abandonner (sinon l'utilisateur ne sait pas que
+       la copie a échoué). */
+    function doCopy(text) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        return navigator.clipboard.writeText(text).catch(function () {
+          return fallbackCopy(text);
+        });
+      }
+      return fallbackCopy(text);
+    }
+
+    if (btnCopy) {
+      btnCopy.addEventListener('click', function () {
+        doCopy(location.href)
+          .then(function () { if (copied) copied.classList.add('on'); })
+          .catch(function () {
+            if (urlBox) { urlBox.style.color = '#2fe6a7'; }
+            if (copied) {
+              copied.textContent = 'Copie refusée par le navigateur — appuie longuement sur le lien ci-dessous';
+              copied.classList.add('on');
+            }
+          });
+      });
+    }
+
+    if (skip) {
+      skip.addEventListener('click', function () { html.classList.remove('is-inapp'); });
+    }
+
+    // Dans un WebView, un clic sur un badge de store ne mène nulle part :
+    // on réaffiche la marche à suivre au lieu de laisser un lien mort.
+    var UA_INAPP = /(TikTok|musical_ly|BytedanceWebview|trill_|Instagram|FBAN|FBAV|Snapchat|LinkedInApp)/i;
+    Array.prototype.forEach.call(document.querySelectorAll('.store-badge'), function (a) {
+      a.addEventListener('click', function (e) {
+        if (UA_INAPP.test(navigator.userAgent || '')) {
+          e.preventDefault();
+          html.classList.add('is-inapp');
+        }
+      });
+    });
+  })();
+  </script>
 
   <script src="../assets/js/site.js" defer></script>
   <script src="../assets/js/i18n.js" data-default="fr" defer></script>
