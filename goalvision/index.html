@@ -217,13 +217,35 @@
     .inapp__url { margin-top: 18px; word-break: break-all; user-select: all; -webkit-user-select: all; color: #4e5a60; font-size: 11px; font-family: 'JetBrains Mono', monospace; }
   </style>
   <script>
-    /* Détection du navigateur intégré AVANT le premier rendu : évite d'afficher
-       la page puis de la remplacer. TikTok, Instagram, Facebook, Snapchat et
-       LinkedIn ouvrent les liens dans un WebView qui bloque les stores. */
+    /* Deux comportements, décidés AVANT le premier rendu :
+       1. Navigateur intégré (TikTok, Instagram, Facebook, Snapchat, LinkedIn) : ces
+          WebViews bloquent l'ouverture vers l'App Store / Google Play → on affiche
+          l'écran « Encore une étape » (2 gestes) au lieu d'un bouton mort.
+       2. Vrai navigateur (Safari, Chrome…) : on envoie DIRECTEMENT vers le OneLink
+          AppsFlyer, qui route seul vers l'App Store ou le Play Store selon l'OS.
+          16/11/2026 — demande de Junior : le lien bio doit ouvrir le store, pas une page.
+          Le OneLink porte la campagne TikTok (pid/c obligatoires côté AppsFlyer). */
     (function () {
       var ua = navigator.userAgent || '';
       var inApp = /(TikTok|musical_ly|BytedanceWebview|trill_|Bytedance|Instagram|FBAN|FBAV|FB_IAB|Snapchat|LinkedInApp)/i.test(ua);
-      if (inApp) document.documentElement.classList.add('is-inapp');
+
+      if (inApp) {
+        document.documentElement.classList.add('is-inapp');
+        return;
+      }
+
+      // Paramètres surchargeables depuis l'URL : ?c=TikTok_Campaign&creator=memphis
+      var q = new URLSearchParams(window.location.search || '');
+      var campagne = q.get('c') || q.get('campaign') || 'TikTok_Campaign';
+      var createur = q.get('creator') || q.get('af_sub1') || 'tiktok_bio';
+
+      var onelink = 'https://goalvision.onelink.me/J6He'
+        + '?pid=tiktok_int'
+        + '&c=' + encodeURIComponent(campagne)
+        + '&af_channel=tiktok'
+        + '&af_sub1=' + encodeURIComponent(createur);
+
+      window.location.replace(onelink);
     })();
   </script>
 </head>
@@ -239,7 +261,7 @@
       </svg>
 
       <h2 class="inapp__title" id="inapp-title" data-fr="Encore une étape">One more step</h2>
-      <p class="inapp__sub" data-fr="Ce navigateur intégré n'ouvre pas l'App Store. Deux secondes, et c'est réglé.">This in-app browser can't open the App Store. It takes two seconds.</p>
+      <p class="inapp__sub" data-fr="Ouvre ce lien dans Safari ou Chrome : le store s'ouvrira tout seul.">Open this link in Safari or Chrome: the store opens by itself.</p>
 
       <ol class="inapp__steps">
         <li class="inapp__step">
@@ -258,7 +280,7 @@
           </svg>
           <span class="inapp__txt">
             <strong data-fr="Appuie sur « ··· »">Tap “···”</strong>
-            <span data-fr="En haut à droite de l'écran">Top right of the screen</span>
+            <span data-fr="En haut à droite">Top right</span>
           </span>
         </li>
         <li class="inapp__step">
@@ -272,19 +294,7 @@
           </svg>
           <span class="inapp__txt">
             <strong data-fr="« Ouvrir dans le navigateur »">“Open in browser”</strong>
-            <span data-fr="Ou « Ouvrir dans Safari / Chrome »">Or “Open in Safari / Chrome”</span>
-          </span>
-        </li>
-        <li class="inapp__step">
-          <span class="inapp__num">3</span>
-          <svg class="inapp__art" viewBox="0 0 54 44" fill="none" aria-hidden="true">
-            <rect x="16" y="5" width="22" height="34" rx="5.5" stroke="currentColor" stroke-opacity=".38"/>
-            <path d="M27 13v9.5m0 0-3.4-3.4M27 22.5l3.4-3.4" stroke="#2fe6a7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M21.5 28.5h11" stroke="currentColor" stroke-opacity=".32" stroke-linecap="round"/>
-          </svg>
-          <span class="inapp__txt">
-            <strong data-fr="Le store s'ouvre">The store opens</strong>
-            <span data-fr="Télécharge GoalVision, c'est gratuit">Download GoalVision, it's free</span>
+            <span data-fr="Le store s'ouvre ensuite tout seul">The store then opens by itself</span>
           </span>
         </li>
       </ol>
